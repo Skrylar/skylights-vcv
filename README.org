@@ -1,0 +1,11 @@
+* Modules
+
+** What Note?
+The =What Note?= is a CV tuner with a digital display. It shows the
+semitone, octave, cents and absolute voltage of the signal which
+enters its port.
+
+* Licenses
+Skylights itself is available under the BSD license.
+
+Skylights is based on the Rack plugin template, which was provided under CC-0.
