@@ -7,12 +7,12 @@ SLUG = Skylights
 
 # Must follow the format in the Versioning section of
 # https://vcvrack.com/manual/PluginDevelopmentTutorial.html
-VERSION = 0.6.0
+VERSION = 0.6.1-pre
 
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS +=
 CFLAGS +=
-CXXFLAGS +=
+CXXFLAGS += -mrdrnd
 
 # Careful about linking to shared libraries, since you can't assume much about the user's environment and library search path.
 # Static libraries are fine.
