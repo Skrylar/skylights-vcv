@@ -11,16 +11,20 @@ void turing_module::step() {
    else
       mode = params[P_MODE].value;
    
+   bool hot = m_sequence & 0x1;
+   outputs[O_PULSE].value = hot ? 10.0 : 0.0;
+      
    // check for clock advance
    auto was_high = m_clock_trigger.isHigh();
    m_clock_trigger.process(inputs[I_CLOCK].value);
    if (!was_high && was_high != m_clock_trigger.isHigh()) {
       // clock was advanced
-      bool hot = m_sequence & 0x1;
-
+      
       // write knob always zeroes our input
       if (params[P_WRITE].value > 0.9) hot = false;
-      else if (mode > 0.66) {
+      else if (mode > 0.9) {
+	 // leave hot alone
+      } else if (mode > 0.55) {
 	 // inverts about 13% of the time
 	 const size_t TRIES = 3;
 	 bool should_flip = true;
@@ -32,7 +36,7 @@ void turing_module::step() {
 	    if (!should_flip) break;
 	 }
 	 hot = should_flip ? !hot : hot;
-      } else if (mode > 0.33) {
+      } else if (mode > 0.10) {
 	 // 50/50 invert
 	 bool should_invert = m_spigot.next();
 	 hot = should_invert ? !hot : hot;
@@ -58,6 +62,22 @@ void turing_module::step() {
       seq |= (hot ? 1 : 0) << (steps - 1);
       m_sequence &= ~mask;
       m_sequence += seq;
+
+      uint8_t signal_d = m_sequence & 0xFF;
+      double signal_a = (((double)signal_d) / 255.0);
+      outputs[O_VOLTAGE].value =
+	 (signal_a * params[P_SCALE].value) // signal scaled by scale knob
+	 - (5.0 * params[P_POLE].value);    // shift to bi-polar on request
+
+      // expander is always 10v unipolar
+      outputs[O_EXPANSION].value = signal_a * 10.0;
+      
+      for (size_t i = 0;
+	   i < 8;
+	   i++)
+      {
+	 lights[L_LIGHT8-i].value = ((m_sequence & (1 << i)) > 0) ? 1.0 : 0.0;
+      }
    }
 }
 
@@ -68,10 +88,18 @@ turing_module::~turing_module() {
 }
 
 json_t* turing_module::toJson() {
-   // TODO sequencer state goes here
-   return NULL;
+   auto map = json_object();
+
+   json_object_set_new(map, "sequence", json_integer(m_sequence));
+   
+   return map;
 }
 
 void turing_module::fromJson(json_t *root) {
-   // TODO
+   if (!root) return;
+
+   auto seqo = json_object_get(root, "sequence");
+   if (json_is_number(seqo)) {
+      m_sequence = (uint16_t)json_integer_value(seqo);
+   }
 }

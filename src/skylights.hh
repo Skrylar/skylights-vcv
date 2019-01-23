@@ -25,3 +25,4 @@ extern Plugin *plugin;
 // Forward-declare each Model, defined in each module source file
 extern Model *recorder_model;
 extern Model *whatnote_model;
+extern Model *turing_model;

@@ -9,6 +9,8 @@ struct turing_module : Module {
       P_WRITE,
       P_LENGTH,
       P_MODE,
+      P_POLE,
+      P_SCALE,
       NUM_PARAMS
    };
    enum InputIds {
@@ -19,6 +21,7 @@ struct turing_module : Module {
    enum OutputIds {
       O_VOLTAGE,
       O_EXPANSION,
+      O_PULSE,
       NUM_OUTPUTS
    };
    enum LightIds {
