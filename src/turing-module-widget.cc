@@ -35,10 +35,16 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 	     turing_module::O_EXPANSION));
 
   addOutput(Port::create<PJ301MPort>
-	    (Vec(90, 317),
+	    (Vec(90, 274),
 	     Port::OUTPUT,
 	     module,
 	     turing_module::O_PULSE));
+  
+  addOutput(Port::create<PJ301MPort>
+	    (Vec(90, 317),
+	     Port::OUTPUT,
+	     module,
+	     turing_module::O_GATE));
 
   addParam(ParamWidget::create<RoundHugeBlackKnob>
 	   (Vec(47, 80),

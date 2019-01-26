@@ -21,6 +21,7 @@ struct turing_module : Module {
    enum OutputIds {
       O_VOLTAGE,
       O_EXPANSION,
+      O_GATE,
       O_PULSE,
       NUM_OUTPUTS
    };
@@ -41,4 +42,6 @@ struct turing_module : Module {
    void fromJson(json_t* root) override;
   
    void step() override;
+   void onReset() override;
+   void onRandomize() override;
 };

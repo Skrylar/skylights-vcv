@@ -12,7 +12,8 @@ void turing_module::step() {
       mode = params[P_MODE].value;
    
    bool hot = m_sequence & 0x1;
-   outputs[O_PULSE].value = hot ? 10.0 : 0.0;
+   outputs[O_GATE].value = hot ? 10.0 : 0.0;
+   outputs[O_PULSE].value = outputs[O_GATE].value * inputs[I_CLOCK].value;
       
    // check for clock advance
    auto was_high = m_clock_trigger.isHigh();
@@ -102,4 +103,20 @@ void turing_module::fromJson(json_t *root) {
    if (json_is_number(seqo)) {
       m_sequence = (uint16_t)json_integer_value(seqo);
    }
+}
+
+void turing_module::onReset() {
+  Module::onReset();
+  m_sequence = 0;
+}
+
+void turing_module::onRandomize() {
+  Module::onRandomize();
+  m_sequence = 0;
+  for (size_t i = 0;
+       i < 16;
+       i++)
+  {
+     m_sequence += m_spigot.next() << i;
+  }
 }
