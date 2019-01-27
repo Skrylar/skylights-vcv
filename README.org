@@ -122,4 +122,8 @@ sequence regardless of however many are live.
 * Licenses
 Skylights itself is available under the BSD license.
 
-Skylights is based on the Rack plugin template, which was provided under CC-0.
+Custom graphics were designed by github user [[https://github.com/infamedavid][@infamedavid (David
+Rodriguez)]], provided under CC-BY.
+
+Skylights is based on the Rack plugin template, which was provided
+under CC-0.
