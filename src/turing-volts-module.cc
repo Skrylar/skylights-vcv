@@ -1,7 +1,7 @@
 #include "turing-volts-module.hh"
 
 void turing_volts_module::step() {
-   int16_t seq = (int)((inputs[I_EXPANDER].value / 10.0) * 65595.0);
+   int16_t seq = (int)((inputs[I_EXPANDER].value / 10.0) * 65535.0);
    
    double signal = 0;
    

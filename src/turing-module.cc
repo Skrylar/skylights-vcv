@@ -71,7 +71,7 @@ void turing_module::step() {
 	 - (5.0 * params[P_POLE].value);    // shift to bi-polar on request
 
       // expander is always 10v unipolar
-      outputs[O_EXPANSION].value = (((double)m_sequence) / 65595.0) * 10.0;
+      outputs[O_EXPANSION].value = (((double)m_sequence) / 65535.0) * 10.0;
       
       for (size_t i = 0;
 	   i < 8;
