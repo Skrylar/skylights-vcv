@@ -7,13 +7,13 @@ turing_volts_module_widget::turing_volts_module_widget(Module* module) : ModuleW
   addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
   addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
   
-  addInput(Port::create<PJ301MPort>
+  addInput(Port::create<DavidLTPort>
 	   (Vec(25, 45),
 	    Port::INPUT,
 	    module,
 	    turing_volts_module::I_EXPANDER));
 
-  addOutput(Port::create<PJ301MPort>
+  addOutput(Port::create<DavidLTPort>
 	   (Vec(25, 300),
 	    Port::OUTPUT,
 	    module,

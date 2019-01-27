@@ -10,37 +10,37 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
   addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
   
-  addInput(Port::create<PJ301MPort>
+  addInput(Port::create<DavidLTPort>
 	   (Vec(63, 167),
 	    Port::INPUT,
 	    module,
 	    turing_module::I_MODE));
   
-  addInput(Port::create<PJ301MPort>
+  addInput(Port::create<DavidLTPort>
 	   (Vec(4.5, 173),
 	    Port::INPUT,
 	    module,
 	    turing_module::I_CLOCK));
 
-  addOutput(Port::create<PJ301MPort>
+  addOutput(Port::create<DavidLTPort>
 	    (Vec(64, 317),
 	     Port::OUTPUT,
 	     module,
 	     turing_module::O_VOLTAGE));
 
-  addOutput(Port::create<PJ301MPort>
+  addOutput(Port::create<DavidLTPort>
 	    (Vec(116, 317),
 	     Port::OUTPUT,
 	     module,
 	     turing_module::O_EXPANSION));
 
-  addOutput(Port::create<PJ301MPort>
+  addOutput(Port::create<DavidLTPort>
 	    (Vec(90, 274),
 	     Port::OUTPUT,
 	     module,
 	     turing_module::O_PULSE));
   
-  addOutput(Port::create<PJ301MPort>
+  addOutput(Port::create<DavidLTPort>
 	    (Vec(90, 317),
 	     Port::OUTPUT,
 	     module,

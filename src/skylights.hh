@@ -22,6 +22,8 @@ using namespace rack;
 // Forward-declare the Plugin, defined in skcorder.cc
 extern Plugin *plugin;
 
+#include "components.hh"
+
 // Forward-declare each Model, defined in each module source file
 extern Model *recorder_model;
 extern Model *whatnote_model;
