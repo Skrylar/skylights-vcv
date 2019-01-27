@@ -35,15 +35,7 @@ on the display, scale the signal through the =Scale= knob and perform
 a polarity shift depending on the =UNI/BI= switch.
 
 **** XPND
-The expansion port encodes the internal 16-bit sequence to a [0V, 10V]
-control voltage. =XPND= does not obey the scale or pole settings. You
-/can/ use this to drive other modules in your patch, but its primary
-purpose is connecting to expanders.
-
-Internally an unsigned 16-bit integer is converted to a double and
-divided against 65,535.0 and then normalized to 10V. Expansion modules
-perform these steps in reverse to regain access to individual rhythm
-bits.
+See [[*XPND Ports][XPND Ports]].
 
 **** Gate
 When the bit on the far right of the display is set (the light is
@@ -90,11 +82,7 @@ state, and so will mutate as the master pattern does.
 *** Controls
 
 **** XPND
-Accepts a [0V, 10V] signal, intended to be coming from the ALAN. It is
-possible to use any /other/ sequence source as long as it is capable
-of transmitting an ALAN-compatible XPND signal. Note that Volts only
-reads the five least significant bits of the sequence regardless of
-however many are live.
+See [[*XPND Ports][XPND Ports]].
 
 **** Knobs 1-5
 Each knob ranges from [-1V, 1V] and defaults to 0V. Rotating the knob
@@ -103,6 +91,33 @@ sets the "weight" of
 **** Out
 Output from the module is not normalized, though it cannot output
 outside the range [-5V, 5V]. 
+
+** Pulses (Turing Expander)
+
+*** Controls
+
+**** CLK
+When a clock signal is connected, outputs from this module only happen
+both at the correct steps and when the incoming clock signal is
+high. If you do not have a cable plugged in to this port the outputs
+operate as gates instead of pulses.
+
+**** XPND
+See [[* XPND Ports][XPND Ports]].
+
+** XPND Ports
+The expansion port encodes the internal 16-bit sequence of an ALAN to
+a [0V, 10V] control voltage. =XPND= does not obey any scale or pole
+settings. You /can/ use this to drive other modules in your patch,
+but its primary purpose is connecting to expanders.
+
+Internally an unsigned 16-bit integer is converted to a double and
+divided against 65,535.0 and then normalized to 10V. Expansion modules
+perform these steps in reverse to regain access to individual rhythm
+bits.
+
+Note that Volts only reads the five least significant bits of the
+sequence regardless of however many are live.
 
 * Licenses
 Skylights itself is available under the BSD license.
