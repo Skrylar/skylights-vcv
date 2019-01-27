@@ -27,3 +27,4 @@ extern Model *recorder_model;
 extern Model *whatnote_model;
 extern Model *turing_model;
 extern Model *turing_volts_model;
+extern Model *turing_pulse_model;
