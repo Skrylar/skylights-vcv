@@ -82,7 +82,7 @@ state, and so will mutate as the master pattern does.
 *** Controls
 
 **** XPND
-See [[*XPND Ports][XPND Ports]].
+See [[#xpnd-ports][XPND Ports]].
 
 **** Knobs 1-5
 Each knob ranges from [-1V, 1V] and defaults to 0V. Rotating the knob
@@ -103,7 +103,7 @@ high. If you do not have a cable plugged in to this port the outputs
 operate as gates instead of pulses.
 
 **** XPND
-See [[* XPND Ports][XPND Ports]].
+See [[#xpnd-ports][XPND Ports]].
 
 ** XPND Ports
 The expansion port encodes the internal 16-bit sequence of an ALAN to
