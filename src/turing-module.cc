@@ -10,20 +10,21 @@ void turing_module::step() {
       mode = inputs[I_MODE].value;
    else
       mode = params[P_MODE].value;
-   
+
    bool hot = m_sequence & 0x1;
    outputs[O_GATE].value = hot ? 10.0 : 0.0;
-   outputs[O_PULSE].value = outputs[O_GATE].value * inputs[I_CLOCK].value;
-      
+   outputs[O_PULSE].value =
+     max(outputs[O_GATE].value * inputs[I_CLOCK].value, 10.0);
+
    // check for clock advance
    auto was_high = m_clock_trigger.isHigh();
    m_clock_trigger.process(inputs[I_CLOCK].value);
    if (!was_high && was_high != m_clock_trigger.isHigh()) {
-      // clock was advanced
-      
-      // write knob always zeroes our input
-      if (params[P_WRITE].value > 0.9) hot = false;
-      else if (mode > 0.9) {
+     // clock was advanced
+
+     // write knob always zeroes our input
+     if (params[P_WRITE].value > 0.9) hot = false;
+     else if (mode > 0.9) {
 	 // leave hot alone
       } else if (mode > 0.55) {
 	 // inverts about 13% of the time
@@ -67,12 +68,12 @@ void turing_module::step() {
       uint8_t signal_d = m_sequence & 0xFF;
       double signal_a = (((double)signal_d) / 255.0);
       outputs[O_VOLTAGE].value =
-	 (signal_a * params[P_SCALE].value) // signal scaled by scale knob
-	 - (5.0 * params[P_POLE].value);    // shift to bi-polar on request
+	(signal_a * params[P_SCALE].value) // signal scaled by scale knob
+	- (5.0 * params[P_POLE].value);    // shift to bi-polar on request
 
       // expander is always 10v unipolar
       outputs[O_EXPANSION].value = (((double)m_sequence) / 65535.0) * 10.0;
-      
+
       for (size_t i = 0;
 	   i < 8;
 	   i++)
@@ -92,7 +93,7 @@ json_t* turing_module::toJson() {
    auto map = json_object();
 
    json_object_set_new(map, "sequence", json_integer(m_sequence));
-   
+
    return map;
 }
 

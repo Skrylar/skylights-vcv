@@ -1,7 +1,8 @@
 #include "turing-pulse-module.hh"
 
+#include <iostream>
 void turing_pulse_module::step() {
-   int16_t seq = (int)((inputs[I_EXPANDER].value / 10.0) * 65535.0);
+   uint16_t seq = (uint16_t)ceil((inputs[I_EXPANDER].value / 10.0) * 65535.0);
 
    outputs[O_GATE1      ].value	= ((seq & 1 ) == 1  ? 10.0 : 0.0);
    outputs[O_GATE2      ].value	= ((seq & 2 ) == 2  ? 10.0 : 0.0);
