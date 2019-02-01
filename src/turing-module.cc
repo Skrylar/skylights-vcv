@@ -14,7 +14,7 @@ void turing_module::step() {
    bool hot = m_sequence & 0x1;
    outputs[O_GATE].value = hot ? 10.0 : 0.0;
    outputs[O_PULSE].value =
-     max(outputs[O_GATE].value * inputs[I_CLOCK].value, 10.0);
+     min(outputs[O_GATE].value * inputs[I_CLOCK].value, 10.0);
 
    // check for clock advance
    auto was_high = m_clock_trigger.isHigh();
