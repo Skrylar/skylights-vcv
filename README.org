@@ -105,6 +105,26 @@ operate as gates instead of pulses.
 **** XPND
 See [[#xpnd-ports][XPND Ports]].
 
+** Vactrol (Turing Expander)
+The Vactrol mixer accepts four incoming signals, passes them through
+four independent attenuvators, then outputs them to the left and/or
+right output channels depending on the state of a turing machine
+connected via the =XPND= port.
+
+*** Ports
+**** XPND
+See [[#xpnd-ports][XPND Ports]].
+
+**** IN
+Single channel audio signals going in to the mixer.
+
+**** OUT
+The left and right output channels from the mixer.
+
+*** Controls
+Each knob controls an internal attenuvator; the knobs from top to
+bottom represent the same input as the input jacks from top to bottom.
+
 ** XPND Ports
 The expansion port encodes the internal 16-bit sequence of an ALAN to
 a [0V, 10V] control voltage. =XPND= does not obey any scale or pole
