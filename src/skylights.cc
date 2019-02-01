@@ -14,4 +14,5 @@ void init(Plugin *p) {
 	p->addModel(turing_model);
 	p->addModel(turing_volts_model);
 	p->addModel(turing_pulse_model);
+	p->addModel(turing_vactrol_model);
 }
