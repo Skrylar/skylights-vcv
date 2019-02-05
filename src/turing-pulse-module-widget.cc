@@ -58,4 +58,4 @@ turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleW
 // author name for categorization per plugin, module slug (should never
 // change), human-readable module name, and any number of tags
 // (found in `include/tags.hpp`) separated by commas.
-Model *turing_pulse_model = Model::create<turing_pulse_module, turing_pulse_module_widget>("Skylights", "SkTuringPulse", "SK Alan (Pulse Expander)", EXTERNAL_TAG);
+Model *turing_pulse_model = Model::create<turing_pulse_module, turing_pulse_module_widget>("Skylights", "SkTuringPulse", "SK Alan (Pulse Expander)", UTILITY_TAG);

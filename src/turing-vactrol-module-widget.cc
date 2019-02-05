@@ -71,4 +71,4 @@ Model *turing_vactrol_model =
    ("Skylights",
     "SkTuringVactrol",
     "SK Alan (Vactrol Mix Expander)",
-    EXTERNAL_TAG);
+    UTILITY_TAG);
