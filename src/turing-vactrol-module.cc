@@ -17,7 +17,7 @@ void turing_vactrol_module::step() {
 
    size_t o = 0;
    for (size_t i = 0;
-	i <= 4;
+	i < 4;
 	i++)
    {
       if (seq & (1 << o++)) {
