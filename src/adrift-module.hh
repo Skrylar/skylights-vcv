@@ -2,7 +2,7 @@
 
 struct adrift_module: public Module {
    static const size_t channels = 1;
-   
+
    enum ParamIds {
       P_ATTENUATOR,
       NUM_PARAMS
@@ -11,6 +11,7 @@ struct adrift_module: public Module {
       I_TRIG_ALL,
       I_TRIG0,
       I_CV0,
+      I_BIP0,
       NUM_INPUTS
    };
    enum OutputIds {
@@ -22,9 +23,11 @@ struct adrift_module: public Module {
    };
 
    SchmittTrigger m_reset_all;
-   
+
    SchmittTrigger m_reset[channels];
    double noise[channels];
+
+   bit_spigot m_noise_source;
 
    adrift_module();
    virtual ~adrift_module();
