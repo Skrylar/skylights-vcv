@@ -32,15 +32,16 @@ void recorder_module::onSampleRateChange() {
 }
 
 void recorder_module::open_tape() {
-   if (m_tape.is_open()) close_tape();
-   // TODO
+   m_tape.open();
 }
 
 void recorder_module::close_tape() {
-   if (!m_tape.is_open()) return; // do nothing if no tape open
-   // TODO
+   m_tape.close();
 }
 
 void recorder_module::maybe_reopen_tape() {
-   if (m_tape.is_open()) open_tape();
+   if (m_tape.is_open()) {
+      close_tape();
+      open_tape();
+   }
 }
