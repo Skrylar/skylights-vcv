@@ -1,4 +1,8 @@
+#pragma once
+
+#include "skylights.hh"
 #include <string>
+#include <thread>
 
 class tape_file {
 public:

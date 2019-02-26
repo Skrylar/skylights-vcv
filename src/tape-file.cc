@@ -1,5 +1,6 @@
 #include "tape-file.hh"
 #include <chrono>
+#include <iostream>
 #include <sstream>
 #include <cmath>
 
