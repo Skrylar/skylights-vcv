@@ -14,8 +14,8 @@ void tape_file::worker_function(tape_file* root) {
       // reduce heat of this loop
       std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
-      while (!x.empty()) {
 	 auto frame = root->m_buffer.pop();
+      while (!root->m_buffer.empty()) {
 
 	 for (size_t i = 0;
 	      i < TRACKS;
