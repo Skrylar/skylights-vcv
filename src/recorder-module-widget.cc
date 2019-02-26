@@ -12,35 +12,35 @@ recorder_module_widget::recorder_module_widget(Module* module)
    addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 10.53)),
+	    (mm2px(Vec(3.7069211, 15.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 0));
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 21.06)),
+	    (mm2px(Vec(3.7069211, 28.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 1));
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 31.589999999999996)),
+	    (mm2px(Vec(3.7069211, 41.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 2));
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 42.12)),
+	    (mm2px(Vec(3.7069211, 54.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 3));
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 52.65)),
+	    (mm2px(Vec(3.7069211, 67.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 4));
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 63.17999999999999)),
+	    (mm2px(Vec(3.7069211, 80.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 5));
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 73.71)),
+	    (mm2px(Vec(3.7069211, 93.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 6));
    addInput(Port::create<PJ301MPort>
-	    (mm2px(Vec(3.7069211, 84.24)),
+	    (mm2px(Vec(3.7069211, 106.53)),
 	     Port::INPUT, module,
 	     recorder_module::AUDIO_INPUT + 7));
 }
@@ -65,7 +65,7 @@ void recorder_module_widget::appendContextMenu(Menu* menu) {
 }
 
 void recorder_module_widget::draw(NVGcontext* vg) {
-   // TODO
+   ModuleWidget::draw(vg);
 }
 
 // Specify the Module and ModuleWidget subclass, human-readable
