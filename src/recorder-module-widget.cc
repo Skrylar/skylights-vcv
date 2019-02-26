@@ -49,7 +49,7 @@ recorder_module_widget::~recorder_module_widget() {
 }
 
 json_t* recorder_module_widget::toJson() {
-   // TODO
+   return ModuleWidget::toJson();
 }
 
 void recorder_module_widget::fromJson(json_t* rootJ) {
