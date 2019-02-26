@@ -54,7 +54,7 @@ void tape_file::write_riff_header() {
 	     << (uint32_t)44100 * TRACKS * (BITRATE / 8) // byte rate
 	     << (uint16_t)TRACKS * (BITRATE / 8) // block alignment
 	     << (uint16_t)BITRATE;		 // 16 bits per sample
-   
+
    // data chunk
    m_fstream << 'd' << 'a' << 't' << 'a'
 	     << (uint32_t)0;	// samples * channels * (bitrate/8)
