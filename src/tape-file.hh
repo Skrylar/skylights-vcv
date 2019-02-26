@@ -3,6 +3,9 @@
 #include "skylights.hh"
 #include <string>
 #include <thread>
+#include <fstream>
+#include <dsp/ringbuffer.hpp>
+#include <dsp/frame.hpp>
 
 class tape_file {
 public:
@@ -11,7 +14,7 @@ public:
 protected:
    bool m_open;			// whether tape is recording
    std::fstream m_fstream;	// stream to wav file
-   DoubleRingBuffer<Frame<TRACKS>, (1 << 15)> m_buffer;
+   rack::DoubleRingBuffer<rack::Frame<TRACKS>, (1 << 15)> m_buffer;
    std::thread m_worker_thread;	// handle to worker thread
 
    void write_riff_header();
