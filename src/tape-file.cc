@@ -5,6 +5,11 @@
 #include <cmath>
 #include <iomanip>
 
+tape_file::tape_file() {
+}
+
+tape_file::~tape_file() {}
+
 void tape_file::worker_function(tape_file* root) {
    root->m_fstream.open(assetGlobal(tape_file::generate_name()));
    root->write_riff_header();
