@@ -69,7 +69,7 @@ void tape_file::update_riff_counters(uint32_t samples) {
    m_fstream.seekp(0, std::sekdir::end);
 }
 
-const std::string& tape_file::generate_name() const {
+static const std::string& tape_file::generate_name() {
    auto time_now = std::chrono::system_clock::to_time_t
       (std::chrono::system_clock::now());
 

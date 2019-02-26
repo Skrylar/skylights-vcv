@@ -23,7 +23,7 @@ public:
 
    // generates a filename suitable for throwing blindly in to a
    // recording bin and probably not overwriting anything
-   static const std::string& generate_name() const;
+   static const std::string& generate_name();
 
    inline bool is_open() const { return m_open; }
 
