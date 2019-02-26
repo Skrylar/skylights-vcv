@@ -63,11 +63,11 @@ void tape_file::write_riff_header() {
 
 void tape_file::update_riff_counters(uint32_t samples) {
    uint32_t subchunk2_size = (TRACKS * (BITRATE / 8) * samples);
-   m_fstream.seekp(4, std::seekdir::beg); // riff chunk size
+   m_fstream.seekp(4, std::ios_base::beg); // riff chunk size
    m_fstream << ((uint32_t)36 + subchunk2_size);
-   m_fstream.seekp(40, std::seekdir::beg); // data chunk size
+   m_fstream.seekp(40, std::ios_base::beg); // data chunk size
    m_fstream << ((uint32_t)subchunk2_size);
-   m_fstream.seekp(0, std::sekdir::end);
+   m_fstream.seekp(0, std::ios_base::end);
 }
 
 static const std::string& tape_file::generate_name() {
