@@ -75,7 +75,7 @@ const std::string tape_file::generate_name() {
    auto time_now = std::chrono::system_clock::to_time_t
       (std::chrono::system_clock::now());
 
-   std::istringstream buffer;
+   std::ostringstream buffer;
    buffer << std::put_time(std::localtime(&time_now), "%F %T") << ".wav";
    return buffer.str();
 }
