@@ -32,7 +32,7 @@ void tape_file::worker_function(tape_file* root) {
       }
    }
 
-   update_riff_counters(samples_written);   
+   root->update_riff_counters(samples_written);
    root->m_fstream.flush();
    root->m_fstream.close();
 }
