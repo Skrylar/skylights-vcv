@@ -2,7 +2,7 @@
 #include "recorder-module.hh"
 
 recorder_module_widget::recorder_module_widget(Module* module)
-   : Module(module)
+   : ModuleWidget(module)
 {
    setPanel(SVG::load(assetPlugin(plugin, "res/Recorder.svg")));
 
