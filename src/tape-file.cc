@@ -3,8 +3,7 @@
 #include <sstream>
 #include <cmath>
 
-static
-void worker_function(tape_file* root) {
+void tape_file::worker_function(tape_file* root) {
    root->m_fstream.open(assetGlobal(tape_file::generate_name()));
    root->write_riff_header();
 

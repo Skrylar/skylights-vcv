@@ -14,6 +14,8 @@ protected:
 
    void write_riff_header();
    void update_riff_counters(uint32_t samples);
+
+   static void worker_function(tape_file* root);
 public:
    tape_file();
    explicit tape_file(tape_file& other); // XXX optional; only for heavy classes
