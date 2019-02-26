@@ -7,8 +7,6 @@
 class tape_file {
 public:
    static const int BITRATE = 16;
-   static const char* RIFF_TAG = "RIFF";
-   static const char* WAVE_TAG = "WAVE";
    static const size_t TRACKS = 8;
 protected:
    bool m_open;			// whether tape is recording
