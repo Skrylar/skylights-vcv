@@ -22,8 +22,8 @@ void tape_file::worker_function(tape_file* root) {
 	      i++)
 	 {
 	    int16_t sample =
-	       floor(32767.0 *			    // 16-bit signed limit
-		     (min(max(frame[i], -5.0), 5.0) // hard clip to valid CVs
+	       floor(32767.0 *	// 16-bit signed limit
+		     (min(max(frame.samples[i], -5.0), 5.0) // hard clip to valid CVs
 		      / 10.0));	// counter rack's built-in gain
 	    root->m_fstream << sample;
 	 }
