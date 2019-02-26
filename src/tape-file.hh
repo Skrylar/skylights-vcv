@@ -39,4 +39,7 @@ public:
 
    void open();
    void close();
+
+   // checks if the buffer is full
+   bool backlogged();
 };

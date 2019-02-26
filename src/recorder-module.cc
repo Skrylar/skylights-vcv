@@ -3,15 +3,15 @@
 void recorder_module::step() {
    if (!m_tape.is_open()) return; // do nothing if no tape open
 
-   if (!m_output_buffer.full()) {
+   if (!m_tape.backlogged()) {
       Frame<AUDIO_INPUTS> input_frame;
       for (size_t i = 0;
 	   i < AUDIO_INPUTS;
 	   i++)
       {
-	 input_frame.samples[i] = inputs[AUDIO_INPUT+i];
+	 input_frame.samples[i] = inputs[AUDIO_INPUT+i].value;
       }
-      m_output_buffer.push(input_frame);
+      m_tape.feed(input_frame);
    } else {
       // TODO lock up rack until we've acquired some breathing room
    }

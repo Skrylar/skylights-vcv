@@ -94,3 +94,7 @@ void tape_file::close() {
    m_open = false;		// signal worker thread to quit
    m_worker_thread.join();	// wait for it to terminate
 }
+
+bool tape_file::backlogged() {
+   return m_buffer.full();
+}
