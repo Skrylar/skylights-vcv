@@ -76,7 +76,7 @@ json_t* adrift_module::toJson() {
 	i < channels;
 	i++)
    {
-      json_array_set_new(array, i, json_number(noise[i]));
+      json_array_set_new(array, i, json_integer(noise[i]));
    }
 
    json_object_set_new(map, "noise", array);
@@ -89,7 +89,7 @@ void adrift_module::fromJson(json_t* root) {
    auto array_schrodinger = json_object_get(root, "noise");
 
    if (json_is_array(array_schrodinger)) {
-      auto array = json_array_value(array_schrodinger);
+      auto array = array_schrodinger;
 
       for (size_t i = 0;
 	   i < channels;
@@ -97,7 +97,7 @@ void adrift_module::fromJson(json_t* root) {
       {
 	 auto schrodingers_float = json_array_get(array, i);
 	 if (json_is_number(schrodingers_float)) {
-	    noise[i] = json_number_value(schrodingers_float);
+	    noise[i] = json_integer_value(schrodingers_float);
 	 } else {
 	    noisify(i);
 	 }
