@@ -7,13 +7,13 @@ struct adrift_module: public Module {
 
    enum ParamIds {
       P_ATTENUATOR,
+      P_BIP0,
       NUM_PARAMS
    };
    enum InputIds {
       I_TRIG_ALL,
       I_TRIG0,
       I_CV0,
-      I_BIP0,
       NUM_INPUTS
    };
    enum OutputIds {

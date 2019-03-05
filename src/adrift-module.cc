@@ -54,7 +54,7 @@ void adrift_module::step() {
       outputs[O_OUT0+i].value =
 	 inputs[I_CV0+i].value +
 	 ((noise[i] -
-	   (0.5 * params[I_BIP0+i].value)) * params[P_ATTENUATOR].value);
+	   (0.5 * params[P_BIP0+i].value)) * params[P_ATTENUATOR].value);
    }
 }
 
