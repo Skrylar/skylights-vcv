@@ -35,11 +35,11 @@ struct adrift_module: public Module {
    void noisify_all();
    void noisify(int channel);
 
-   virtual void step();
-   virtual void onSampleRateChange();
-   virtual void onReset();
-   virtual void onRandomize();
+   void step() override;
+   void onSampleRateChange() override;
+   void onReset() override;
+   void onRandomize() override;
 
-   virtual json_t *toJson();
-   virtual void fromJson(json_t* root);
+   json_t *toJson() override;
+   void fromJson(json_t* root) override;
 };
