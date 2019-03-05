@@ -21,14 +21,14 @@ void adrift_module::noisify(int channel) {
    // there is very likely a more efficient way to pull this off
    uint8_t dac;
 
-   dac = (m_noise_source.next() ? 0 : 1) << 0;
-   dac = (m_noise_source.next() ? 0 : 1) << 1;
-   dac = (m_noise_source.next() ? 0 : 1) << 2;
-   dac = (m_noise_source.next() ? 0 : 1) << 3;
-   dac = (m_noise_source.next() ? 0 : 1) << 4;
-   dac = (m_noise_source.next() ? 0 : 1) << 5;
-   dac = (m_noise_source.next() ? 0 : 1) << 6;
-   dac = (m_noise_source.next() ? 0 : 1) << 7;
+   dac  = (m_noise_source.next() ? 0 : 1) << 0;
+   dac += (m_noise_source.next() ? 0 : 1) << 1;
+   dac += (m_noise_source.next() ? 0 : 1) << 2;
+   dac += (m_noise_source.next() ? 0 : 1) << 3;
+   dac += (m_noise_source.next() ? 0 : 1) << 4;
+   dac += (m_noise_source.next() ? 0 : 1) << 5;
+   dac += (m_noise_source.next() ? 0 : 1) << 6;
+   dac += (m_noise_source.next() ? 0 : 1) << 7;
 
    noise[channel] = ((double)dac) / 255.0;
 }
