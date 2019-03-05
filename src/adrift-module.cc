@@ -34,14 +34,14 @@ void adrift_module::noisify(int channel) {
 }
 
 void adrift_module::step() {
-   if (m_reset_all.process(inputs[I_TRIG_ALL])) {
+   if (m_reset_all.process(inputs[I_TRIG_ALL].value)) {
       noisify_all();
    } else {
       for (size_t i = 0;
 	   i < channels;
 	   i++)
       {
-	 if (m_reset[i].process(inputs[I_TRIG0+i])) {
+	 if (m_reset[i].process(inputs[I_TRIG0+i].value)) {
 	    noisify(i);
 	 }
       }
@@ -51,9 +51,10 @@ void adrift_module::step() {
 	i < channels;
 	i++)
    {
-      output[O_OUT0+i] =
-	 inputs[I_CV0+i] +
-	 ((noise[i] - (0.5 * param[I_BIP0+i])) * param[P_ATTENUATOR]);
+      outputs[O_OUT0+i].value =
+	 inputs[I_CV0+i].value +
+	 ((noise[i] -
+	   (0.5 * params[I_BIP0+i].value)) * params[P_ATTENUATOR].value);
    }
 }
 
