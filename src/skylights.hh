@@ -31,3 +31,4 @@ extern Model *turing_model;
 extern Model *turing_volts_model;
 extern Model *turing_pulse_model;
 extern Model *turing_vactrol_model;
+extern Model *adrift_model;
