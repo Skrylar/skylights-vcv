@@ -66,66 +66,6 @@ adrift_module_widget::adrift_module_widget(Module* module)
 adrift_module_widget::~adrift_module_widget() {
 }
 
-json_t* adrift_module_widget::toJson() {
-   return ModuleWidget::toJson();
-}
-
-void adrift_module_widget::fromJson(json_t* rootJ) {
-   // TODO
-}
-
-void adrift_module_widget::create() {
-   // TODO
-}
-
-void adrift_module_widget::_delete() {
-   // TODO
-}
-
-void adrift_module_widget::disconnect() {
-   // TODO
-}
-
-void adrift_module_widget::reset() {
-   // TODO
-}
-
-void adrift_module_widget::randomize() {
-   // TODO
-}
-
-void adrift_module_widget::appendContextMenu(Menu* menu) {
-   // TODO
-}
-
-void adrift_module_widget::draw(NVGcontext* vg) {
-   ModuleWidget::draw(vg);
-}
-
-void adrift_module_widget::onMouseDown(EventMouseDown& e) {
-   // TODO
-}
-
-void adrift_module_widget::onMouseMove(EventMouseMove& e) {
-   // TODO
-}
-
-void adrift_module_widget::onHoverKey(EventHoverKey& e) {
-   // TODO
-}
-
-void adrift_module_widget::onDragStart(EventDragStart& e) {
-   // TODO
-}
-
-void adrift_module_widget::onDragEnd(EventDragEnd& e) {
-   // TODO
-}
-
-void adrift_module_widget::onDragMove(EventDragMove& e) {
-   // TODO
-}
-
 // Specify the Module and ModuleWidget subclass, human-readable
 // author name for categorization per plugin, module slug (should never
 // change), human-readable module name, and any number of tags
