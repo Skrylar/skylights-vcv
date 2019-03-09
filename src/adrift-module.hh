@@ -17,10 +17,12 @@ struct adrift_module: public Module {
       I_CV0, I_CV1, I_CV2, I_CV3, I_CV4, I_CV5,
       NUM_INPUTS
    };
+
    enum OutputIds {
       O_OUT0,
       NUM_OUTPUTS
    };
+
    enum LightIds {
       NUM_LIGHTS
    };
