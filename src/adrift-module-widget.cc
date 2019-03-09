@@ -32,25 +32,26 @@ adrift_module_widget::adrift_module_widget(Module* module)
 	i++)
    {
       const int shift = 32;
-      // sail
+
+      // input
       addInput(Port::create<DavidLTPort>
 	       (Vec(7, 155 + (shift * i)),
 		Port::INPUT,
 		module,
-		adrift_module::I_TRIG0));
+		adrift_module::I_CV0 + i));
 
-      // input
+      // sail
       addInput(Port::create<DavidLTPort>
 	       (Vec(41, 155 + (shift * i)),
 		Port::INPUT,
 		module,
-		adrift_module::I_CV0));
+		adrift_module::I_TRIG0 + i));
 
       // bipolar toggle
       addParam(ParamWidget::create<CKSS>
 	       (Vec(85, 157 + (shift * i)),
 		module,
-		adrift_module::P_BIP0,
+		adrift_module::P_BIP0 + i,
 		0.0,
 		1.0,
 		0.0));
@@ -59,7 +60,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
 		(Vec(117, 155 + (shift * i)),
 		 Port::OUTPUT,
 		 module,
-		 adrift_module::O_OUT0));
+		 adrift_module::O_OUT0 + i));
    }
 }
 
