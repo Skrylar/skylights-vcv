@@ -23,8 +23,8 @@ adrift_module_widget::adrift_module_widget(Module* module)
 	    (mm2px(Vec(23, 22)),
 	     module,
 	     adrift_module::P_ATTENUATOR,
-	     -2.0,
-	     2.0,
+	     -1.0,
+	     1.0,
 	     0.0));
 
    for (size_t i = 0;
