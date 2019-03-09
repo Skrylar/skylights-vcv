@@ -28,7 +28,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
 	     0.0));
 
    for (size_t i = 0;
-	i < 6;
+	i < adrift_module::channels;
 	i++)
    {
       const int shift = 32;
