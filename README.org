@@ -1,52 +1,69 @@
+[[https://www.ko-fi.com/V7V6RG3E][https://www.ko-fi.com/img/donate_sm.png]]
+
+Skylights and SkJack modules are free but developing, debugging, and
+keeping up with Rack updates is not. [[https://www.ko-fi.com/V7V6RG3E][3$ is an hour that can be spent
+with Rack instead of doing menial typing labor on job markets.]]
+
 * Modules
 
 ** What Note?
+
+#+begin_note
+This module is stylized as "WHATNOTE?" even though technically, it is
+two words.
+#+end_note
+
 The =What Note?= is a CV tuner with a digital display. It shows the
 semitone, octave, cents and absolute voltage of the signal which
 enters its port.
 
-** ALAN
-The =ALAN= is an SK version of [[https://musicthing.co.uk/collateral/TuringRev1Docs.pdf][Tom Whitwell's Turing Machine]].
+** Turing Machines
+*** ALAN
+The =ALAN= is an SK version of [[https://musicthing.co.uk/collateral/TuringRev1Docs.pdf][Tom Whitwell's Turing Machine]]. I wrote
+it because the original Turing Machine is open hardware, and so the
+virtual version should be open source too[fn::There is also a weird
+rite of passage that one build their own Turing Machine when they
+start building Eurorack components, as the Turing Machine is a common
+first project despite its complexity.].
 
-While a turing machine sequencer is not designed to hold on to state
-forever, the ALAN does save its internal sequence to VCV files. Right
-click and choose =Save preset= if you want to keep a locked sequence,
-and a sequence is also persisted in to any saved .vcv file.
+| Port      | What it does                                                                 |
+|-----------+------------------------------------------------------------------------------|
+| Lock Knob | Controls the probability that bits in the sequence are flipped.              |
+| Out       | Outputs the last eight bits of the sequence, run through an 8-bit DAC.       |
+| Gate      | Outputs high if the final bit is lit (represented by a bar through the LED.) |
+| Write     | Forces new bits to always be zero.                                           |
+| Pole      | Sets whether the DAC emits a unipolar or bipolar signal.                     |
+| Scale     | Scales the outgoing signal from the DAC.                                     |
 
-*** Controls
+ALAN sequences are also exported over the [[* XPND Ports][XPND interface]]. This allows
+one or more expanders to access the sequence and provide linked
+functionality.
+
 **** Lock knob
 Use of the lock knob is the primary way to control a Turing Machine
 sequencer. Rotating the knob places it in to a different "mode" which
 determines how much variation will be introduced to the existing
 sequence over time.
 
- - Beta side: sequence loops indefinitely.
- - 55-90%: around one in eight bits is changed.
- - 10-54%: approximately every other bit is flipped.
- - Alpha side: every bit is flipped.
+ - Beta side :: sequence loops indefinitely.
+ - 55-90% :: around one in eight bits is changed.
+ - 10-54% :: approximately every other bit is flipped.
+ - Alpha side :: every bit is flipped.
 
 There is a CV port beneath the lock kob. When a patch cable is
 connected to this, the knob is ignored and the control voltage takes
 its place. CV signals should be within [0V, 10V].
-
-**** Out
-Out will perform an analogue to digital encoding of the 8 visible bits
-on the display, scale the signal through the =Scale= knob and perform
-a polarity shift depending on the =UNI/BI= switch.
-
-**** XPND
-See [[*XPND Ports][XPND Ports]].
-
-**** Gate
-When the bit on the far right of the display is set (the light is
-blue), gate will output a high signal. Otherwise gate will output a
-low signal.
 
 **** Write
 When the write switch is set, bits are always set to zero when they
 scroll past the right side of the display. This can be used to
 manually clean up a busy sequence or to clear the sequencer after
 enough steps pass.
+
+**** Gate
+When the bit on the far right of the display is set (the light is
+blue), gate will output a high signal. Otherwise gate will output a
+low signal.
 
 **** Pole
 The pole switch allows you to set the module output between unipolar
@@ -57,7 +74,21 @@ The scale knob allows you to attenuate or boost the output signal. By
 default this is set to 1, which covers a single octave in unipolar
 mode.
 
-*** Patching ideas
+**** Out
+Out will perform an analogue to digital encoding of the 8 visible bits
+on the display, scale the signal through the =Scale= knob and perform
+a polarity shift depending on the =UNI/BI= switch.
+
+**** Persistence
+
+While a turing machine sequencer is not designed to hold on to state
+forever, ALAN does write its internal sequence to JSON. This means:
+
+ - A locked sequence is saved along with your =.vcv= file, and,
+ - You can right click and use =Save preset= or =Open preset= to
+   keep a library of locked sequences.
+
+**** Patching ideas
 Turing sequencers can drive an entire synthesizer cabinet; an external
 clock feeds pulses in, while =Out= and =Gate= produce notes or
 rhythms. Connecting =Out= to a note quantizer and further to a VCO can
@@ -71,61 +102,60 @@ synthesizers. Placing the lock knob will then control the amount of
 "grit" present in the sound, from 8-bit white noise to a more normal
 waveform.
 
-** Volts (Turing Expander)
-Volts is an expander for the ALAN, based on [[https://musicthing.co.uk/pages/volts.html][Tom Whitwell's own "Volts" expansion module]].
+*** Volts (Turing Expander)
 
-It reads the last five bits in the sequence, attenuates them through
-parallel control pots and sums the result. This allows creating
-complimentary patterns that are still related to a turing sequencer's
-state, and so will mutate as the master pattern does.
+| Port  | What it does                                                             |
+|-------+--------------------------------------------------------------------------|
+| In    | Feeds signals to the mixer.                                              |
+| Knobs | Attenuverts the respective input signal. Clamped to the range [-1V, 1V]. |
+| Out   | Stereo output of the mixer. Clamped to the range [-5V, 5V].              |
 
-*** Controls
+Volts is an expander for the ALAN based on [[https://musicthing.co.uk/pages/volts.html][Tom Whitwell's own "Volts"
+expansion module]].
 
-**** XPND
-See [[#xpnd-ports][XPND Ports]].
+Volts reads the last eight bits of a sequence generated by ALAN. This
+means you need an ALAN (or [[* XPND Ports][ALAN XPND-compatible]] module) in conjunction
+with a Volts. Each bit corresponds to an LED on the faceplate.
 
-**** Knobs 1-5
-Each knob ranges from [-1V, 1V] and defaults to 0V. Rotating the knob
-sets the "weight" of 
+Input signals are fed in through the audio ports, then attenuverted
+based on their corresponding knobs. Each knob also has two LEDs that
+display if that channel will be added to the left, right, or both
+output channels.
 
-**** Out
-Output from the module is not normalized, though it cannot output
-outside the range [-5V, 5V]. 
+*** Pulses (Turing Expander)
 
-** Pulses (Turing Expander)
+**** Controls
 
-*** Controls
-
-**** CLK
+***** CLK
 When a clock signal is connected, outputs from this module only happen
 both at the correct steps and when the incoming clock signal is
 high. If you do not have a cable plugged in to this port the outputs
 operate as gates instead of pulses.
 
-**** XPND
-See [[#xpnd-ports][XPND Ports]].
+***** XPND
+See [[* XPND Ports][XPND Ports]].
 
-** Vactrol (Turing Expander)
+*** Vactrol (Turing Expander)
 The Vactrol mixer accepts four incoming signals, passes them through
 four independent attenuvators, then outputs them to the left and/or
 right output channels depending on the state of a turing machine
 connected via the =XPND= port.
 
-*** Ports
-**** XPND
-See [[#xpnd-ports][XPND Ports]].
+**** Ports
+***** XPND
+See [[* XPND Ports][XPND Ports]].
 
-**** IN
+***** IN
 Single channel audio signals going in to the mixer.
 
-**** OUT
+***** OUT
 The left and right output channels from the mixer.
 
-*** Controls
+**** Controls
 Each knob controls an internal attenuvator; the knobs from top to
 bottom represent the same input as the input jacks from top to bottom.
 
-** XPND Ports
+*** XPND Ports
 The expansion port encodes the internal 16-bit sequence of an ALAN to
 a [0V, 10V] control voltage. =XPND= does not obey any scale or pole
 settings. You /can/ use this to drive other modules in your patch,
@@ -138,6 +168,37 @@ bits.
 
 Note that Volts only reads the five least significant bits of the
 sequence regardless of however many are live.
+
+** ADRIFT
+
+| Port       | What it does                                    |
+|------------+-------------------------------------------------|
+| All        | Triggers all channels to sample new noise.      |
+| Turbulence | Controls amount of noise added to each channel. |
+| In         | CV to have noise added.                         |
+| Sail       | Triggers a single channel to sample new noise.  |
+| BIP        | Whether noise is bipolar.                       |
+| Out        | Input CV with attenuverted noise added.         |
+
+ADRIFT is based on the idea of using a sample and hold, connected to a
+noise source, as a means of adding minor amounts of flavor to
+notes. It simplifies the need for multiple Kinks, VCAs and mixers when
+all you want is just a little bit of drift to your attacks.
+
+| Detuners                                                               | Sample & Holds                         |
+|------------------------------------------------------------------------+----------------------------------------|
+| Continue to change V/Oct CVs throughout a note.                        | Lock the noise added during a note.    |
+| Usually allow a single input with multiple separately detuned outputs. | Usually a single input, single output. |
+
+=Sail= is always handled prior to coloring and outputting signals
+throughout each channel. This means you can connect the =Gate= or
+=Retrig= from note inputs to =Sail= and attacks will appropriately
+receive detuned input.
+
+ADRIFT does not sample new noise unless explicitly told to (via a high
+pulse to either =All= or a =Sail= port.) Retriggering while a note is
+probably fun but will be abrupt--you will need to bring your own slew
+limiter if smoothness is desired.
 
 * Licenses
 Skylights itself is available under the BSD license.
