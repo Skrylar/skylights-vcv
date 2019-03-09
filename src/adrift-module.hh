@@ -19,7 +19,7 @@ struct adrift_module: public Module {
    };
 
    enum OutputIds {
-      O_OUT0,
+      O_OUT0, O_OUT1, O_OUT2, O_OUT3, O_OUT4, O_OUT5,
       NUM_OUTPUTS
    };
 
