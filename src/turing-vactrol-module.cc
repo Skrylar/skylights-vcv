@@ -15,22 +15,44 @@ void turing_vactrol_module::step() {
    outputs[O_LEFT].value = 0.0;
    outputs[O_RIGHT].value = 0.0;
 
-   size_t o = 0;
+   size_t o = 0; // stores which of the eight steps we're working with
    for (size_t i = 0;
 	i < 4;
 	i++)
    {
-      if (seq & (1 << o++)) {
-	 outputs[O_LEFT].value += params[P_VOL1 + i].value * inputs[I_INPUT1 + i].value;
-      }
+      double gate;
+      gate = (seq & (1 << o)) ? 1.0 : 0.0;
+      outputs[O_LEFT].value +=
+	 m_antipop[o].step(gate,
+			   params[P_VOL1 + i].value *
+			   inputs[I_INPUT1 + i].value);
 
-      if (seq & (1 << o++)) {
-	 outputs[O_RIGHT].value += params[P_VOL1 + i].value * inputs[I_INPUT1 + i].value;
-      }
-   }   
+      o++;
+
+      gate = (seq & (1 << o)) ? 1.0 : 0.0;
+      outputs[O_RIGHT].value +=
+	 m_antipop[o].step(gate,
+			   params[P_VOL1 + i].value *
+			   inputs[I_INPUT1 + i].value);
+
+      o++;
+   }
 }
 
-turing_vactrol_module::turing_vactrol_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+turing_vactrol_module::turing_vactrol_module()
+  : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+{
+   onSampleRateChange();
+}
+
+void turing_vactrol_module::onSampleRateChange() {
+   double s = engineGetSampleRate();
+   for (size_t i = 0;
+	i < 8;
+	i++)
+   {
+      m_antipop[i] = antipop_t(s);
+   }
 }
 
 turing_vactrol_module::~turing_vactrol_module() {

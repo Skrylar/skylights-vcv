@@ -1,6 +1,7 @@
 #pragma once
 
 #include "skylights.hh"
+#include "antipop.hh"
 
 struct turing_vactrol_module : Module {
    enum ParamIds {
@@ -19,24 +20,28 @@ struct turing_vactrol_module : Module {
       NUM_INPUTS
    };
    enum OutputIds {
-      O_LEFT,	 
-      O_RIGHT,	 
+      O_LEFT,
+      O_RIGHT,
       NUM_OUTPUTS
    };
    enum LightIds {
-      L_GATE1,	 
-      L_GATE2,	 
-      L_GATE3,	 
-      L_GATE4,	 
-      L_GATE5,	 
-      L_GATE6,	 
-      L_GATE7,	 
+      L_GATE1,
+      L_GATE2,
+      L_GATE3,
+      L_GATE4,
+      L_GATE5,
+      L_GATE6,
+      L_GATE7,
       L_GATE8,
       NUM_LIGHTS
    };
 
+   antipop_t m_antipop[8];
+
+   void onSampleRateChange() override;
+
    turing_vactrol_module();
    virtual ~turing_vactrol_module();
-  
+
    void step() override;
 };
