@@ -38,8 +38,4 @@ turing_volts_module_widget::turing_volts_module_widget(Module* module) : ModuleW
     }
 }
 
-// Specify the Module and ModuleWidget subclass, human-readable
-// author name for categorization per plugin, module slug (should never
-// change), human-readable module name, and any number of tags
-// (found in `include/tags.hpp`) separated by commas.
-Model *turing_volts_model = Model::create<turing_volts_module, turing_volts_module_widget>("Skylights", "SkTuringVolts", "SK Alan (Volts Expander)", UTILITY_TAG);
+

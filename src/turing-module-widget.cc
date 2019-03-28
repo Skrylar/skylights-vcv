@@ -96,9 +96,3 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 	       turing_module::L_LIGHT1 + i));
   }
 }
-
-// Specify the Module and ModuleWidget subclass, human-readable
-// author name for categorization per plugin, module slug (should never
-// change), human-readable module name, and any number of tags
-// (found in `include/tags.hpp`) separated by commas.
-Model *turing_model = Model::create<turing_module, turing_module_widget>("Skylights", "SkTuringV2", "SK Alan (Turing Machine)", SEQUENCER_TAG);

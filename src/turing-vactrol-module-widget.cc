@@ -61,14 +61,3 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
 	      turing_vactrol_module::O_RIGHT));
 }
 
-// Specify the Module and ModuleWidget subclass, human-readable
-// author name for categorization per plugin, module slug (should never
-// change), human-readable module name, and any number of tags
-// (found in `include/tags.hpp`) separated by commas.
-Model *turing_vactrol_model =
-   Model::create<turing_vactrol_module,
-		 turing_vactrol_module_widget>
-   ("Skylights",
-    "SkTuringVactrol",
-    "SK Alan (Vactrol Mix Expander)",
-    UTILITY_TAG);

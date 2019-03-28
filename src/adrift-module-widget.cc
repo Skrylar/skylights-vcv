@@ -66,13 +66,3 @@ adrift_module_widget::adrift_module_widget(Module* module)
 
 adrift_module_widget::~adrift_module_widget() {
 }
-
-// Specify the Module and ModuleWidget subclass, human-readable
-// author name for categorization per plugin, module slug (should never
-// change), human-readable module name, and any number of tags
-// (found in `include/tags.hpp`) separated by commas.
-Model* adrift_model = Model::create<adrift_module, adrift_module_widget>
-   ("Skylights",
-    "SkAdrift",
-    "Adrift (Analogue Drift)",
-    rack::SAMPLE_AND_HOLD_TAG);

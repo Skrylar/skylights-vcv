@@ -27,8 +27,15 @@ extern Plugin *plugin;
 // Forward-declare each Model, defined in each module source file
 extern Model *recorder_model;
 extern Model *whatnote_model;
-extern Model *turing_model;
-extern Model *turing_volts_model;
-extern Model *turing_pulse_model;
-extern Model *turing_vactrol_model;
-extern Model *adrift_model;
+
+/*[[[cog
+  from modules import simple_plugins
+  for p in simple_plugins:
+    cog.outl('extern Model* {}_model;'.format(p['name']))
+  ]]]*/
+extern Model* adrift_model;
+extern Model* turing_model;
+extern Model* turing_pulse_model;
+extern Model* turing_volts_model;
+extern Model* turing_vactrol_model;
+/*[[[end]]]*/
