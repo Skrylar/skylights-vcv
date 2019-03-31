@@ -31,10 +31,10 @@ simple_plugins = [
       'tags': [ModuleTag.UTILITY_TAG],      
    },
    {
-      'name': 'turing_vactrol',
+      'name': 'turing_digital',
       'plugin': 'Skylights',
       'slug': 'SkTuringVactrol',
-      'friendly_name': "SK Alan (Vactrol Mix Expander)",
+      'friendly_name': "SK Alan (Digital Mix Expander)",
       'tags': [ModuleTag.UTILITY_TAG],
    },
 ]

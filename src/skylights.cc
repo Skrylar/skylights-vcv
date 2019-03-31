@@ -22,8 +22,8 @@ Plugin *plugin;
 #include "turing-pulse-module-widget.hh"
 #include "turing-volts-module.hh"
 #include "turing-volts-module-widget.hh"
-#include "turing-vactrol-module.hh"
-#include "turing-vactrol-module-widget.hh"
+#include "turing-digital-module.hh"
+#include "turing-digital-module-widget.hh"
 /*[[[end]]]*/
 
 /*[[[cog
@@ -36,7 +36,7 @@ Model* adrift_model = Model::create<adrift_module, adrift_module_widget>("Skylig
 Model* turing_model = Model::create<turing_module, turing_module_widget>("Skylights", "SkTuringV2", "SK Alan (Turing Machine)", rack::SEQUENCER_TAG);
 Model* turing_pulse_model = Model::create<turing_pulse_module, turing_pulse_module_widget>("Skylights", "SkTuringPulse", "SK Alan (Pulse Expander)", rack::UTILITY_TAG);
 Model* turing_volts_model = Model::create<turing_volts_module, turing_volts_module_widget>("Skylights", "SkTuringVolts", "SK Alan (Volts Expander)", rack::UTILITY_TAG);
-Model* turing_vactrol_model = Model::create<turing_vactrol_module, turing_vactrol_module_widget>("Skylights", "SkTuringVactrol", "SK Alan (Vactrol Mix Expander)", rack::UTILITY_TAG);
+Model* turing_digital_model = Model::create<turing_digital_module, turing_digital_module_widget>("Skylights", "SkTuringVactrol", "SK Alan (Digital Mix Expander)", rack::UTILITY_TAG);
 /*[[[end]]]*/
 
 void init(Plugin *p) {
@@ -56,6 +56,6 @@ void init(Plugin *p) {
    p->addModel(turing_model);
    p->addModel(turing_pulse_model);
    p->addModel(turing_volts_model);
-   p->addModel(turing_vactrol_model);
+   p->addModel(turing_digital_model);
    /*[[[end]]]*/
 }
