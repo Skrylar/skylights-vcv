@@ -1,6 +1,9 @@
 #include "skylights.hh"
 #include "recorder-module.hh"
 
+// make sure our weird header libs don't bit rot
+#include "vtl5c1.hh"
+
 Plugin *plugin;
 
 
