@@ -3,12 +3,12 @@
 #include <cmath>
 #include <cassert>
 
-struct vtl5c1 {
+struct vtl5c3 {
    double m_up_eta;
    double m_down_eta;
    double m_value;
 
-   vtl5c1():
+   vtl5c3():
       m_up_eta(0.0),
       m_down_eta(0.0),
       m_value(0.0)
@@ -30,7 +30,8 @@ struct vtl5c1 {
       static const double a = 19977.0579;
       static const double b = 4.72586603;
       static const double c = 22.9420751;
-      return (a * (std::pow(2.71828, (-b * x)))) + c;
+      double resistance = (a * (std::pow(2.71828, (-b * x)))) + c;
+      return (1.0 - (resistance / 20000.0));
    }
 
    // input is within [0, 1] instead of miliamps

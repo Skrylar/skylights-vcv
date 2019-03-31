@@ -2,7 +2,7 @@
 #include "recorder-module.hh"
 
 // make sure our weird header libs don't bit rot
-#include "vtl5c1.hh"
+#include "vtl5c3.hh"
 
 Plugin *plugin;
 
