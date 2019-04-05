@@ -23,17 +23,17 @@ void turing_vactrol_module::step() {
       double gate;
       gate = (seq & (1 << o)) ? 1.0 : 0.0;
       outputs[O_LEFT].value +=
-	 m_antipop[o].step(gate,
-			   params[P_VOL1 + i].value *
-			   inputs[I_INPUT1 + i].value);
+	 m_vactrol[o].step(gate) *
+	 (params[P_VOL1 + i].value *
+	  inputs[I_INPUT1 + i].value);
 
       o++;
 
       gate = (seq & (1 << o)) ? 1.0 : 0.0;
       outputs[O_RIGHT].value +=
-	 m_antipop[o].step(gate,
-			   params[P_VOL1 + i].value *
-			   inputs[I_INPUT1 + i].value);
+	 m_vactrol[o].step(gate) *
+	 (params[P_VOL1 + i].value *
+	  inputs[I_INPUT1 + i].value);
 
       o++;
    }
@@ -42,6 +42,13 @@ void turing_vactrol_module::step() {
 turing_vactrol_module::turing_vactrol_module()
   : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 {
+   for (size_t i = 0;
+	i < 8;
+	i++)
+   {
+      m_vactrol[i] = vtl5c3();
+   }
+
    onSampleRateChange();
 }
 
@@ -51,7 +58,7 @@ void turing_vactrol_module::onSampleRateChange() {
 	i < 8;
 	i++)
    {
-      m_antipop[i] = antipop_t(s);
+      m_vactrol[i].set_samplerate(s);
    }
 }
 

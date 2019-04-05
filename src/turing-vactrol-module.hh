@@ -1,7 +1,7 @@
 #pragma once
 
 #include "skylights.hh"
-#include "antipop.hh"
+#include "vtl5c3.hh"
 
 struct turing_vactrol_module : Module {
    enum ParamIds {
@@ -36,7 +36,7 @@ struct turing_vactrol_module : Module {
       NUM_LIGHTS
    };
 
-   antipop_t m_antipop[8];
+   vtl5c3 m_vactrol[8];
 
    void onSampleRateChange() override;
 
