@@ -30,15 +30,15 @@ Plugin *pluginInstance;
 
 /*[[[cog
   for p in simple_plugins:
-    cog.out('Model* {0}_model = Model::create<{0}_module, {0}_module_widget>("{1}"'.format(p['name'], p['slug']))
+    cog.out('Model* {0}_model = createModel<{0}_module, {0}_module_widget>("{1}"'.format(p['name'], p['slug']))
     cog.outl(');')
   ]]]*/
-Model* adrift_model = Model::create<adrift_module, adrift_module_widget>("SkAdrift");
-Model* turing_model = Model::create<turing_module, turing_module_widget>("SkTuringV2");
-Model* turing_pulse_model = Model::create<turing_pulse_module, turing_pulse_module_widget>("SkTuringPulse");
-Model* turing_volts_model = Model::create<turing_volts_module, turing_volts_module_widget>("SkTuringVolts");
-Model* turing_digital_model = Model::create<turing_digital_module, turing_digital_module_widget>("SkTuringVactrol");
-Model* turing_vactrol_model = Model::create<turing_vactrol_module, turing_vactrol_module_widget>("SkTuringVactrolAnalogue");
+Model* adrift_model = createModel<adrift_module, adrift_module_widget>("SkAdrift");
+Model* turing_model = createModel<turing_module, turing_module_widget>("SkTuringV2");
+Model* turing_pulse_model = createModel<turing_pulse_module, turing_pulse_module_widget>("SkTuringPulse");
+Model* turing_volts_model = createModel<turing_volts_module, turing_volts_module_widget>("SkTuringVolts");
+Model* turing_digital_model = createModel<turing_digital_module, turing_digital_module_widget>("SkTuringVactrol");
+Model* turing_vactrol_model = createModel<turing_vactrol_module, turing_vactrol_module_widget>("SkTuringVactrolAnalogue");
 /*[[[end]]]*/
 
 void init(Plugin *p) {

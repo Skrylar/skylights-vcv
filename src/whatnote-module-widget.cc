@@ -81,4 +81,4 @@ void whatnote_module_widget::draw(NVGcontext* vg) {
 // author name for categorization per plugin, module slug (should never
 // change), human-readable module name, and any number of tags
 // (found in `include/tags.hpp`) separated by commas.
-Model *whatnote_model = Model::create<whatnote_module, whatnote_module_widget>("Skylights", "SkWhatnoteCV", "SK What Note? (CV Tuner)", TUNER_TAG, UTILITY_TAG);
+Model *whatnote_model = createModel<whatnote_module, whatnote_module_widget>("Skylights", "SkWhatnoteCV", "SK What Note? (CV Tuner)", TUNER_TAG, UTILITY_TAG);

@@ -20,4 +20,4 @@ recorder_module_widget::recorder_module_widget(Module* module) : ModuleWidget(mo
 // author name for categorization per plugin, module slug (should never
 // change), human-readable module name, and any number of tags
 // (found in `include/tags.hpp`) separated by commas.
-Model *recorder_model = Model::create<recorder_module, recorder_module_widget>("Skylights", "SkRecorder", "SK Recorder", RECORDING_TAG);
+Model *recorder_model = createModel<recorder_module, recorder_module_widget>("Skylights", "SkRecorder", "SK Recorder", RECORDING_TAG);
