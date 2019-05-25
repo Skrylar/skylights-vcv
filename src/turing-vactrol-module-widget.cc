@@ -11,7 +11,7 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
 
    addInput(createPort<DavidLTPort>
 	    (Vec(10, 40),
-	     Port::INPUT,
+	     PortWidget::INPUT,
 	     module,
 	     turing_vactrol_module::I_EXPANDER));
    
@@ -21,7 +21,7 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
    {
       addInput(createPort<DavidLTPort>
 	       (Vec(10, 100 + (30 * i)),
-		Port::INPUT,
+		PortWidget::INPUT,
 		module,
 		turing_vactrol_module::I_INPUT1 + i));
    }

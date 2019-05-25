@@ -14,7 +14,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
    // all
    addInput(createPort<DavidLTPort>
 	    (mm2px(Vec(6, 22)),
-	     Port::INPUT,
+	     PortWidget::INPUT,
 	     module,
 	     adrift_module::I_TRIG_ALL));
 
@@ -36,14 +36,14 @@ adrift_module_widget::adrift_module_widget(Module* module)
       // input
       addInput(createPort<DavidLTPort>
 	       (Vec(7, 155 + (shift * i)),
-		Port::INPUT,
+		PortWidget::INPUT,
 		module,
 		adrift_module::I_CV0 + i));
 
       // sail
       addInput(createPort<DavidLTPort>
 	       (Vec(41, 155 + (shift * i)),
-		Port::INPUT,
+		PortWidget::INPUT,
 		module,
 		adrift_module::I_TRIG0 + i));
 

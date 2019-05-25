@@ -9,7 +9,7 @@ turing_volts_module_widget::turing_volts_module_widget(Module* module) : ModuleW
   
   addInput(createPort<DavidLTPort>
 	   (Vec(25, 45),
-	    Port::INPUT,
+	    PortWidget::INPUT,
 	    module,
 	    turing_volts_module::I_EXPANDER));
 

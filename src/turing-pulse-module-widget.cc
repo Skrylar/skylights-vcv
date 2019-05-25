@@ -11,13 +11,13 @@ turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleW
   
    addInput(createPort<DavidLTPort>
 	    (Vec(25, 45),
-	     Port::INPUT,
+	     PortWidget::INPUT,
 	    module,
 	    turing_pulse_module::I_EXPANDER));
 
   addInput(createPort<DavidLTPort>
 	   (Vec(65, 45),
-	    Port::INPUT,
+	    PortWidget::INPUT,
 	    module,
 	    turing_pulse_module::I_PULSE));
   

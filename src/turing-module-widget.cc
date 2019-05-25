@@ -12,13 +12,13 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
   
   addInput(createPort<DavidLTPort>
 	   (Vec(63, 167),
-	    Port::INPUT,
+	    PortWidget::INPUT,
 	    module,
 	    turing_module::I_MODE));
   
   addInput(createPort<DavidLTPort>
 	   (Vec(4.5, 173),
-	    Port::INPUT,
+	    PortWidget::INPUT,
 	    module,
 	    turing_module::I_CLOCK));
 
