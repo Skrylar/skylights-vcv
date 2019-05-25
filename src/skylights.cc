@@ -30,16 +30,15 @@ Plugin *plugin;
 
 /*[[[cog
   for p in simple_plugins:
-    cog.out('Model* {0}_model = Model::create<{0}_module, {0}_module_widget>("{1}", "{2}", "{3}", '.format(p['name'], p['plugin'], p['slug'], p['friendly_name']))
-    cog.out(', '.join(['rack::' + x.name for x in p['tags']]))
+    cog.out('Model* {0}_model = Model::create<{0}_module, {0}_module_widget>("{1}"'.format(p['name'], p['slug']))
     cog.outl(');')
   ]]]*/
-Model* adrift_model = Model::create<adrift_module, adrift_module_widget>("Skylights", "SkAdrift", "Adrift (Analogue Drift)", rack::SAMPLE_AND_HOLD_TAG);
-Model* turing_model = Model::create<turing_module, turing_module_widget>("Skylights", "SkTuringV2", "SK Alan (Turing Machine)", rack::SEQUENCER_TAG);
-Model* turing_pulse_model = Model::create<turing_pulse_module, turing_pulse_module_widget>("Skylights", "SkTuringPulse", "SK Alan (Pulse Expander)", rack::UTILITY_TAG);
-Model* turing_volts_model = Model::create<turing_volts_module, turing_volts_module_widget>("Skylights", "SkTuringVolts", "SK Alan (Volts Expander)", rack::UTILITY_TAG);
-Model* turing_digital_model = Model::create<turing_digital_module, turing_digital_module_widget>("Skylights", "SkTuringVactrol", "SK Alan (Digital Mix Expander)", rack::UTILITY_TAG);
-Model* turing_vactrol_model = Model::create<turing_vactrol_module, turing_vactrol_module_widget>("Skylights", "SkTuringVactrolAnalogue", "SK Alan (Vactrol Mix Expander)", rack::UTILITY_TAG);
+Model* adrift_model = Model::create<adrift_module, adrift_module_widget>("SkAdrift");
+Model* turing_model = Model::create<turing_module, turing_module_widget>("SkTuringV2");
+Model* turing_pulse_model = Model::create<turing_pulse_module, turing_pulse_module_widget>("SkTuringPulse");
+Model* turing_volts_model = Model::create<turing_volts_module, turing_volts_module_widget>("SkTuringVolts");
+Model* turing_digital_model = Model::create<turing_digital_module, turing_digital_module_widget>("SkTuringVactrol");
+Model* turing_vactrol_model = Model::create<turing_vactrol_module, turing_vactrol_module_widget>("SkTuringVactrolAnalogue");
 /*[[[end]]]*/
 
 void init(Plugin *p) {
