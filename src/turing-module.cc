@@ -89,7 +89,7 @@ turing_module::turing_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM
 turing_module::~turing_module() {
 }
 
-json_t* turing_module::toJson() {
+json_t* turing_module::dataToJson() {
    auto map = json_object();
 
    json_object_set_new(map, "sequence", json_integer(m_sequence));

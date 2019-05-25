@@ -38,7 +38,7 @@ struct turing_module : Module {
    turing_module();
    virtual ~turing_module();
 
-   json_t *toJson() override;
+   json_t *dataToJson() override;
    void fromJson(json_t* root) override;
   
    void step() override;

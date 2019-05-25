@@ -69,7 +69,7 @@ void adrift_module::onRandomize() {
    noisify_all();
 }
 
-json_t* adrift_module::toJson() {
+json_t* adrift_module::dataToJson() {
    auto map = json_object();
    auto array = json_array();
 
