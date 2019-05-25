@@ -45,5 +45,5 @@ struct adrift_module: public Module {
    void onRandomize() override;
 
    json_t *dataToJson() override;
-   void fromJson(json_t* root) override;
+   void dataFromJson(json_t* root) override;
 };

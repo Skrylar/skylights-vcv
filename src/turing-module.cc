@@ -97,7 +97,7 @@ json_t* turing_module::dataToJson() {
    return map;
 }
 
-void turing_module::fromJson(json_t *root) {
+void turing_module::dataFromJson(json_t *root) {
    if (!root) return;
 
    auto seqo = json_object_get(root, "sequence");

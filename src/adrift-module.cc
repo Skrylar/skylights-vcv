@@ -84,7 +84,7 @@ json_t* adrift_module::dataToJson() {
    return map;
 }
 
-void adrift_module::fromJson(json_t* root) {
+void adrift_module::dataFromJson(json_t* root) {
    if (!root) return;
 
    auto array_schrodinger = json_object_get(root, "noise");
