@@ -24,25 +24,25 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 
   addOutput(createPort<DavidLTPort>
 	    (Vec(64, 317),
-	     Port::OUTPUT,
+	     PortWidget::OUTPUT,
 	     module,
 	     turing_module::O_VOLTAGE));
 
   addOutput(createPort<DavidLTPort>
 	    (Vec(116, 317),
-	     Port::OUTPUT,
+	     PortWidget::OUTPUT,
 	     module,
 	     turing_module::O_EXPANSION));
 
   addOutput(createPort<DavidLTPort>
 	    (Vec(90, 274),
-	     Port::OUTPUT,
+	     PortWidget::OUTPUT,
 	     module,
 	     turing_module::O_PULSE));
   
   addOutput(createPort<DavidLTPort>
 	    (Vec(90, 317),
-	     Port::OUTPUT,
+	     PortWidget::OUTPUT,
 	     module,
 	     turing_module::O_GATE));
 

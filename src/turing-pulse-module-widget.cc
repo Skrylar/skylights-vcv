@@ -27,7 +27,7 @@ turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleW
   {
      addOutput(createPort<DavidLTPort>
 	       (Vec(15, 80 + (30 * i)),
-		Port::OUTPUT,
+		PortWidget::OUTPUT,
 		module,
 		turing_pulse_module::O_GATE1 + i));
 
@@ -43,7 +43,7 @@ turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleW
   {
      addOutput(createPort<DavidLTPort>
 	       (Vec(95, 80 + (60 * i)),
-		Port::OUTPUT,
+		PortWidget::OUTPUT,
 		module,
 		turing_pulse_module::O_GATE1P2 + i));
 

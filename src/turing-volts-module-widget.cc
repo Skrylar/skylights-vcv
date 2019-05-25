@@ -15,7 +15,7 @@ turing_volts_module_widget::turing_volts_module_widget(Module* module) : ModuleW
 
   addOutput(createPort<DavidLTPort>
 	   (Vec(25, 300),
-	    Port::OUTPUT,
+	    PortWidget::OUTPUT,
 	    module,
 	    turing_volts_module::O_VOLTAGE));
   

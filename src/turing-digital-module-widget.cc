@@ -51,12 +51,12 @@ turing_digital_module_widget::turing_digital_module_widget(Module* module) : Mod
   
    addOutput(createPort<DavidLTPort>
 	     (Vec(10, 300),
-	      Port::OUTPUT,
+	      PortWidget::OUTPUT,
 	      module,
 	      turing_digital_module::O_LEFT));
    addOutput(createPort<DavidLTPort>
 	     (Vec(40, 300),
-	      Port::OUTPUT,
+	      PortWidget::OUTPUT,
 	      module,
 	      turing_digital_module::O_RIGHT));
 }
