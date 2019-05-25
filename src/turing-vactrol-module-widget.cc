@@ -31,7 +31,7 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
 	i < 4;
 	i++)
    {
-      addParam(ParamWidget::create<RoundBlackKnob>
+      addParam(createParam<RoundBlackKnob>
 	       (Vec(60, 80 + (50 * i)),
 		module,
 		turing_vactrol_module::P_VOL1 + i,

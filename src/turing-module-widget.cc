@@ -46,7 +46,7 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 	     module,
 	     turing_module::O_GATE));
 
-  addParam(ParamWidget::create<RoundHugeBlackKnob>
+  addParam(createParam<RoundHugeBlackKnob>
 	   (Vec(47, 80),
 	    module,
 	    turing_module::P_MODE,
@@ -54,7 +54,7 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 	    1.0,
 	    1.0));
 
-  addParam(ParamWidget::create<RoundSmallBlackKnob>
+  addParam(createParam<RoundSmallBlackKnob>
 	   (Vec(34, 320),
 	    module,
 	    turing_module::P_SCALE,
@@ -62,7 +62,7 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 	    10.0,
 	    1.0));
 
-  addParam(ParamWidget::create<RoundBlackSnapKnob>
+  addParam(createParam<RoundBlackSnapKnob>
 	   (Vec(61, 215),
 	    module,
 	    turing_module::P_LENGTH,
@@ -70,7 +70,7 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 	    16.0,
 	    8.0));
 
-  addParam(ParamWidget::create<CKSS>
+  addParam(createParam<CKSS>
 	   (Vec(10, 320),
 	    module,
 	    turing_module::P_POLE,
@@ -78,7 +78,7 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
 	    1.0,
 	    0.0));
 
-  addParam(ParamWidget::create<CKSS>
+  addParam(createParam<CKSS>
 	   (Vec(121, 175),
 	    module,
 	    turing_module::P_WRITE,

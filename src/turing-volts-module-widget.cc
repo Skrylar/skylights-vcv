@@ -23,7 +23,7 @@ turing_volts_module_widget::turing_volts_module_widget(Module* module) : ModuleW
        i < 5;
        i++)
     {
-      addParam(ParamWidget::create<RoundBlackKnob>
+      addParam(createParam<RoundBlackKnob>
 	       (Vec(15, 80 + (40 * i)),
 		module,
 		turing_volts_module::P_VOL1 + i,

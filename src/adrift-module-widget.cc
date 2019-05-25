@@ -19,7 +19,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
 	     adrift_module::I_TRIG_ALL));
 
    // turbulence
-   addParam(ParamWidget::create<RoundHugeBlackKnob>
+   addParam(createParam<RoundHugeBlackKnob>
 	    (mm2px(Vec(23, 22)),
 	     module,
 	     adrift_module::P_ATTENUATOR,
@@ -48,7 +48,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
 		adrift_module::I_TRIG0 + i));
 
       // bipolar toggle
-      addParam(ParamWidget::create<CKSS>
+      addParam(createParam<CKSS>
 	       (Vec(85, 157 + (shift * i)),
 		module,
 		adrift_module::P_BIP0 + i,
