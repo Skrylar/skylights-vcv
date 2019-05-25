@@ -12,7 +12,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
    addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
    // all
-   addInput(Port::create<DavidLTPort>
+   addInput(createPort<DavidLTPort>
 	    (mm2px(Vec(6, 22)),
 	     Port::INPUT,
 	     module,
@@ -34,14 +34,14 @@ adrift_module_widget::adrift_module_widget(Module* module)
       const int shift = 32;
 
       // input
-      addInput(Port::create<DavidLTPort>
+      addInput(createPort<DavidLTPort>
 	       (Vec(7, 155 + (shift * i)),
 		Port::INPUT,
 		module,
 		adrift_module::I_CV0 + i));
 
       // sail
-      addInput(Port::create<DavidLTPort>
+      addInput(createPort<DavidLTPort>
 	       (Vec(41, 155 + (shift * i)),
 		Port::INPUT,
 		module,
@@ -56,7 +56,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
 		1.0,
 		0.0));
 
-      addOutput(Port::create<DavidLTPort>
+      addOutput(createPort<DavidLTPort>
 		(Vec(117, 155 + (shift * i)),
 		 Port::OUTPUT,
 		 module,

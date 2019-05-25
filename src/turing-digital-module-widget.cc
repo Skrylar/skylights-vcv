@@ -9,7 +9,7 @@ turing_digital_module_widget::turing_digital_module_widget(Module* module) : Mod
    addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
    addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-   addInput(Port::create<DavidLTPort>
+   addInput(createPort<DavidLTPort>
 	    (Vec(10, 40),
 	     Port::INPUT,
 	     module,
@@ -19,7 +19,7 @@ turing_digital_module_widget::turing_digital_module_widget(Module* module) : Mod
 	i < 4;
 	i++)
    {
-      addInput(Port::create<DavidLTPort>
+      addInput(createPort<DavidLTPort>
 	       (Vec(10, 100 + (30 * i)),
 		Port::INPUT,
 		module,
@@ -49,12 +49,12 @@ turing_digital_module_widget::turing_digital_module_widget(Module* module) : Mod
 		turing_digital_module::L_GATE1 + y++));
    }
   
-   addOutput(Port::create<DavidLTPort>
+   addOutput(createPort<DavidLTPort>
 	     (Vec(10, 300),
 	      Port::OUTPUT,
 	      module,
 	      turing_digital_module::O_LEFT));
-   addOutput(Port::create<DavidLTPort>
+   addOutput(createPort<DavidLTPort>
 	     (Vec(40, 300),
 	      Port::OUTPUT,
 	      module,
