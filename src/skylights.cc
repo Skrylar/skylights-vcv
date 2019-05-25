@@ -4,7 +4,7 @@
 // make sure our weird header libs don't bit rot
 #include "vtl5c3.hh"
 
-Plugin *plugin;
+Plugin *pluginInstance;
 
 
 /*[[[cog
@@ -42,7 +42,7 @@ Model* turing_vactrol_model = Model::create<turing_vactrol_module, turing_vactro
 /*[[[end]]]*/
 
 void init(Plugin *p) {
-   plugin = p;
+   pluginInstance = p;
    p->slug = TOSTRING(SLUG);
    p->version = TOSTRING(VERSION);
 

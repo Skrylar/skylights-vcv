@@ -20,7 +20,7 @@
 using namespace rack;
 
 // Forward-declare the Plugin, defined in skcorder.cc
-extern Plugin *plugin;
+extern Plugin *pluginInstance;
 
 #include "components.hh"
 
