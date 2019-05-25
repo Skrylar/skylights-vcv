@@ -58,6 +58,15 @@
       "tags": [
         "Utility"
       ]
+    },
+    {
+      "slug": "SkWhatnoteCV",
+      "name": "What Note?",
+      "description": "A CV tuner.",
+      "tags": [
+        "Tuner",
+        "Utility"
+      ]
     }
   ]
 }
