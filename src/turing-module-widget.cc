@@ -90,7 +90,7 @@ turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module
        i < 8;
        i++)
   {
-     addChild(ModuleLightWidget::create<MediumLight<BlueLight>>
+     addChild(createLight<MediumLight<BlueLight>>
 	      (Vec(18 + (15 * i), 50),
 	       module,
 	       turing_module::L_LIGHT1 + i));

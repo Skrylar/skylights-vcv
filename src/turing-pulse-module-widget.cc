@@ -31,7 +31,7 @@ turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleW
 		module,
 		turing_pulse_module::O_GATE1 + i));
 
-     addChild(ModuleLightWidget::create<MediumLight<BlueLight>>
+     addChild(createLight<MediumLight<BlueLight>>
 	      (Vec(43, 88 + (30 * i)),
 	       module,
 	       turing_pulse_module::L_GATE1 + i));
@@ -47,7 +47,7 @@ turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleW
 		module,
 		turing_pulse_module::O_GATE1P2 + i));
 
-     addChild(ModuleLightWidget::create<MediumLight<BlueLight>>
+     addChild(createLight<MediumLight<BlueLight>>
 	      (Vec(123, 88 + (60 * i)),
 	       module,
 	       turing_pulse_module::L_GATE1P2 + i));

@@ -31,7 +31,7 @@ turing_volts_module_widget::turing_volts_module_widget(Module* module) : ModuleW
 		1.0,
 		0.0));
       
-      addChild(ModuleLightWidget::create<MediumLight<BlueLight>>
+      addChild(createLight<MediumLight<BlueLight>>
 	       (Vec(50, 90 + (40 * i)),
 		module,
 		turing_volts_module::L_LIGHT1 + i));

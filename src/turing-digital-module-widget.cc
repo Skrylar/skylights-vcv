@@ -39,11 +39,11 @@ turing_digital_module_widget::turing_digital_module_widget(Module* module) : Mod
 		1.0,
 		0.0));
 
-      addChild(ModuleLightWidget::create<MediumLight<BlueLight>>
+      addChild(createLight<MediumLight<BlueLight>>
 	       (Vec(63, 65 + (50 * i)),
 		module,
 		turing_digital_module::L_GATE1 + y++));
-      addChild(ModuleLightWidget::create<MediumLight<BlueLight>>
+      addChild(createLight<MediumLight<BlueLight>>
 	       (Vec(78, 65 + (50 * i)),
 		module,
 		turing_digital_module::L_GATE1 + y++));
