@@ -2,8 +2,8 @@
 #include "adrift-module-widget.hh"
 
 adrift_module_widget::adrift_module_widget(Module* module)
-   : ModuleWidget()
 {
+	setModule(module);
    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Adrift.svg")));
 
    addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));

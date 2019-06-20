@@ -2,7 +2,7 @@
 #include "turing-vactrol-module.hh"
 
 turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) {
-		setModule(module);
+	setModule(module);
    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/AlanVactrol.svg")));
 
    addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));

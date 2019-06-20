@@ -2,7 +2,7 @@
 #include "turing-volts-module.hh"
 
 turing_volts_module_widget::turing_volts_module_widget(Module* module) {
-		setModule(module);
+	setModule(module);
   setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/AlanVolts.svg")));
 
   addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
