@@ -42,18 +42,20 @@ void turing_vactrol_module::process(const ProcessArgs &args) {
 turing_vactrol_module::turing_vactrol_module()
   : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 {
-   for (size_t i = 0;
-	i < 8;
-	i++)
+   for (size_t i = 0; i < 8; i++)
    {
       m_vactrol[i] = vtl5c3();
    }
 
    onSampleRateChange();
+   for (size_t i = 0; i < 4; i++)
+   {
+     configParam(turing_vactrol_module::P_VOL1 + i, -1.0, 1.0, 0.0, "");
+   }
 }
 
 void turing_vactrol_module::onSampleRateChange() {
-   double s = args.sampleRate;
+   double s = APP->engine->getSampleRate();
    for (size_t i = 0;
 	i < 8;
 	i++)

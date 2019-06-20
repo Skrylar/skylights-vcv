@@ -14,7 +14,7 @@ void turing_module::process(const ProcessArgs &args) {
    bool hot = m_sequence & 0x1;
    outputs[O_GATE].setVoltage(hot ? 10.0 : 0.0);
    outputs[O_PULSE].value =
-     min(outputs[O_GATE].value * inputs[I_CLOCK].getVoltage(), 10.0);
+     std::min(outputs[O_GATE].value * inputs[I_CLOCK].getVoltage(), (float)10.0);
 
    // check for clock advance
    auto was_high = m_clock_trigger.isHigh();
@@ -84,6 +84,11 @@ void turing_module::process(const ProcessArgs &args) {
 }
 
 turing_module::turing_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS), m_sequence(0) {
+  configParam(turing_module::P_MODE, 0.0, 1.0, 1.0, "");
+  configParam(turing_module::P_SCALE, 0.0, 10.0, 1.0, "");
+  configParam(turing_module::P_LENGTH, 2.0, 16.0, 8.0, "");
+  configParam(turing_module::P_POLE, 0.0, 1.0, 0.0, "");
+  configParam(turing_module::P_WRITE, 0.0, 1.0, 0.0, "");
 }
 
 turing_module::~turing_module() {

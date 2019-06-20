@@ -43,10 +43,14 @@ turing_digital_module::turing_digital_module()
   : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 {
    onSampleRateChange();
+   for (size_t i = 0; i < 4; i++)
+   {
+     configParam(turing_digital_module::P_VOL1 + i, -1.0, 1.0, 0.0, "");
+   }
 }
 
 void turing_digital_module::onSampleRateChange() {
-   double s = args.sampleRate;
+   double s = APP->engine->getSampleRate();
    for (size_t i = 0;
 	i < 8;
 	i++)

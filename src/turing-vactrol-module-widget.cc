@@ -11,17 +11,15 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
 
    addInput(createInput<DavidLTPort>
 	    (Vec(10, 40),
-	     PortWidget::INPUT,
 	     module,
 	     turing_vactrol_module::I_EXPANDER));
-   
+
    for (size_t i = 0;
 	i < 4;
 	i++)
    {
       addInput(createInput<DavidLTPort>
 	       (Vec(10, 100 + (30 * i)),
-		PortWidget::INPUT,
 		module,
 		turing_vactrol_module::I_INPUT1 + i));
    }
@@ -31,13 +29,7 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
 	i < 4;
 	i++)
    {
-      addParam(createParam<RoundBlackKnob>
-	       (Vec(60, 80 + (50 * i)),
-		module,
-		turing_vactrol_module::P_VOL1 + i,
-		-1.0,
-		1.0,
-		0.0));
+      addParam(createParam<RoundBlackKnob>(Vec(60, 80 + (50 * i)), module, turing_vactrol_module::P_VOL1 + i));
 
       addChild(createLight<MediumLight<BlueLight>>
 	       (Vec(63, 65 + (50 * i)),
@@ -48,16 +40,13 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
 		module,
 		turing_vactrol_module::L_GATE1 + y++));
    }
-  
+
    addOutput(createOutput<DavidLTPort>
 	     (Vec(10, 300),
-	      PortWidget::OUTPUT,
 	      module,
 	      turing_vactrol_module::O_LEFT));
    addOutput(createOutput<DavidLTPort>
 	     (Vec(40, 300),
-	      PortWidget::OUTPUT,
 	      module,
 	      turing_vactrol_module::O_RIGHT));
 }
-

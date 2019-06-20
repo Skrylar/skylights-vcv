@@ -3,6 +3,12 @@
 adrift_module::adrift_module()
    : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 {
+  configParam(adrift_module::P_ATTENUATOR, -1.0, 1.0, 0.0, "");
+  for (size_t i = 0; i < adrift_module::channels; i++)
+  {
+     // bipolar toggle
+     configParam(adrift_module::P_BIP0 + i, 0.0, 1.0, 0.0, "");
+  }
 }
 
 adrift_module::~adrift_module() {
