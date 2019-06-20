@@ -53,7 +53,7 @@ turing_vactrol_module::turing_vactrol_module()
 }
 
 void turing_vactrol_module::onSampleRateChange() {
-   double s = engineGetSampleRate();
+   double s = args.sampleRate;
    for (size_t i = 0;
 	i < 8;
 	i++)

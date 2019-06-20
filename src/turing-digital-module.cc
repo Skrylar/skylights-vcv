@@ -46,7 +46,7 @@ turing_digital_module::turing_digital_module()
 }
 
 void turing_digital_module::onSampleRateChange() {
-   double s = engineGetSampleRate();
+   double s = args.sampleRate;
    for (size_t i = 0;
 	i < 8;
 	i++)
