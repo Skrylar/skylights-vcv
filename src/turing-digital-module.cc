@@ -12,8 +12,8 @@ void turing_digital_module::process(const ProcessArgs &args) {
    lights[L_GATE7].value = (seq & 64) > 0 ? 1.0 : 0.0;
    lights[L_GATE8].value = (seq & 128) > 0 ? 1.0 : 0.0;
 
-   outputs[O_LEFT].value = 0.0;
-   outputs[O_RIGHT].value = 0.0;
+   outputs[O_LEFT].setVoltage(0.0);
+   outputs[O_RIGHT].setVoltage(0.0);
 
    size_t o = 0; // stores which of the eight steps we're working with
    for (size_t i = 0;

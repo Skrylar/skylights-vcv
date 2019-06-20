@@ -12,7 +12,7 @@ void turing_module::process(const ProcessArgs &args) {
       mode = params[P_MODE].getValue();
 
    bool hot = m_sequence & 0x1;
-   outputs[O_GATE].value = hot ? 10.0 : 0.0;
+   outputs[O_GATE].setVoltage(hot ? 10.0 : 0.0);
    outputs[O_PULSE].value =
      min(outputs[O_GATE].value * inputs[I_CLOCK].getVoltage(), 10.0);
 
@@ -72,7 +72,7 @@ void turing_module::process(const ProcessArgs &args) {
 	- (5.0 * params[P_POLE].getValue());    // shift to bi-polar on request
 
       // expander is always 10v unipolar
-      outputs[O_EXPANSION].value = (((double)m_sequence) / 65535.0) * 10.0;
+      outputs[O_EXPANSION].setVoltage((((double)m_sequence) / 65535.0) * 10.0);
 
       for (size_t i = 0;
 	   i < 8;

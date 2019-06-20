@@ -14,7 +14,7 @@ void turing_pulse_module::process(const ProcessArgs &args) {
    outputs[O_GATE1P2    ].value	= ((seq & 3 ) == 3  ? 10.0 : 0.0);
    outputs[O_GATE2P4    ].value	= ((seq & 10) == 10 ? 10.0 : 0.0);
    outputs[O_GATE4P7    ].value	= ((seq & 72) == 72 ? 10.0 : 0.0);
-   outputs[O_GATE1P2P4P7].value = ((seq & 75) == 75 ? 10.0 : 0.0);
+   outputs[O_GATE1P2P4P7].setVoltage(((seq & 75) == 75 ? 10.0 : 0.0));
 
    if (inputs[I_PULSE].active) {
      outputs[O_GATE1      ].value *= inputs[I_PULSE].getVoltage();
