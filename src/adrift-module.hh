@@ -27,8 +27,8 @@ struct adrift_module: public Module {
       NUM_LIGHTS
    };
 
-   rack::SchmittTrigger m_reset_all;
-   rack::SchmittTrigger m_reset[channels];
+   rack::dsp::SchmittTrigger m_reset_all;
+   rack::dsp::SchmittTrigger m_reset[channels];
    double noise[channels];
 
    bit_spigot m_noise_source;

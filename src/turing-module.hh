@@ -33,7 +33,7 @@ struct turing_module : Module {
 
    uint16_t m_sequence;
    bit_spigot m_spigot;
-   rack::SchmittTrigger m_clock_trigger;
+   rack::dsp::SchmittTrigger m_clock_trigger;
 
    turing_module();
    virtual ~turing_module();
