@@ -9,13 +9,13 @@ turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleW
    addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
    addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
   
-   addInput(createPort<DavidLTPort>
+   addInput(createInput<DavidLTPort>
 	    (Vec(25, 45),
 	     PortWidget::INPUT,
 	    module,
 	    turing_pulse_module::I_EXPANDER));
 
-  addInput(createPort<DavidLTPort>
+  addInput(createInput<DavidLTPort>
 	   (Vec(65, 45),
 	    PortWidget::INPUT,
 	    module,

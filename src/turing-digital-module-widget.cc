@@ -9,7 +9,7 @@ turing_digital_module_widget::turing_digital_module_widget(Module* module) : Mod
    addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
    addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-   addInput(createPort<DavidLTPort>
+   addInput(createInput<DavidLTPort>
 	    (Vec(10, 40),
 	     PortWidget::INPUT,
 	     module,
@@ -19,7 +19,7 @@ turing_digital_module_widget::turing_digital_module_widget(Module* module) : Mod
 	i < 4;
 	i++)
    {
-      addInput(createPort<DavidLTPort>
+      addInput(createInput<DavidLTPort>
 	       (Vec(10, 100 + (30 * i)),
 		PortWidget::INPUT,
 		module,
