@@ -13,7 +13,7 @@ turing_volts_module_widget::turing_volts_module_widget(Module* module) : ModuleW
 	    module,
 	    turing_volts_module::I_EXPANDER));
 
-  addOutput(createPort<DavidLTPort>
+  addOutput(createOutput<DavidLTPort>
 	   (Vec(25, 300),
 	    PortWidget::OUTPUT,
 	    module,

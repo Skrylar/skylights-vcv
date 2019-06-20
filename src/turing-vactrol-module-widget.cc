@@ -49,12 +49,12 @@ turing_vactrol_module_widget::turing_vactrol_module_widget(Module* module) : Mod
 		turing_vactrol_module::L_GATE1 + y++));
    }
   
-   addOutput(createPort<DavidLTPort>
+   addOutput(createOutput<DavidLTPort>
 	     (Vec(10, 300),
 	      PortWidget::OUTPUT,
 	      module,
 	      turing_vactrol_module::O_LEFT));
-   addOutput(createPort<DavidLTPort>
+   addOutput(createOutput<DavidLTPort>
 	     (Vec(40, 300),
 	      PortWidget::OUTPUT,
 	      module,

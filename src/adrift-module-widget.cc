@@ -56,7 +56,7 @@ adrift_module_widget::adrift_module_widget(Module* module)
 		1.0,
 		0.0));
 
-      addOutput(createPort<DavidLTPort>
+      addOutput(createOutput<DavidLTPort>
 		(Vec(117, 155 + (shift * i)),
 		 PortWidget::OUTPUT,
 		 module,
