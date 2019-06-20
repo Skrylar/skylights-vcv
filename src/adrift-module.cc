@@ -1,8 +1,8 @@
 #include "adrift-module.hh"
 
 adrift_module::adrift_module()
-   : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
 {
+	this->Module::config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 }
 
 adrift_module::~adrift_module() {
@@ -33,15 +33,15 @@ void adrift_module::noisify(int channel) {
    noise[channel] = ((double)dac) / 255.0;
 }
 
-void adrift_module::step() {
-   if (m_reset_all.process(inputs[I_TRIG_ALL].value)) {
+void adrift_module::process(const ProcessArgs &args) {
+   if (m_reset_all.process(inputs[I_TRIG_ALL].getVoltage())) {
       noisify_all();
    } else {
       for (size_t i = 0;
 	   i < channels;
 	   i++)
       {
-	 if (m_reset[i].process(inputs[I_TRIG0+i].value)) {
+	 if (m_reset[i].process(inputs[I_TRIG0+i].getVoltage())) {
 	    noisify(i);
 	 }
       }
@@ -52,9 +52,9 @@ void adrift_module::step() {
 	i++)
    {
       outputs[O_OUT0+i].value =
-	 inputs[I_CV0+i].value +
+	 inputs[I_CV0+i].getVoltage() +
 	 ((noise[i] -
-	   (0.5 * params[P_BIP0+i].value)) * params[P_ATTENUATOR].value);
+	   (0.5 * params[P_BIP0+i].getValue())) * params[P_ATTENUATOR].getValue());
    }
 }
 

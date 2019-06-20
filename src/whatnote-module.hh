@@ -28,5 +28,5 @@ struct whatnote_module : Module {
   int cents;			// how many cents are left?
   double voltage;		// what was the last sampled voltage
   
-  void step() override;
+  void process(const ProcessArgs &args) override;
 };

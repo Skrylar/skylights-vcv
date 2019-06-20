@@ -1,7 +1,6 @@
 #pragma once
 
 #include "skylights.hh"
-#include "dsp/digital.hpp"
 #include "bit-spigot.hh"
 
 struct turing_module : Module {
@@ -33,7 +32,7 @@ struct turing_module : Module {
 
    uint16_t m_sequence;
    bit_spigot m_spigot;
-   rack::SchmittTrigger m_clock_trigger;
+   rack::dsp::SchmittTrigger m_clock_trigger;
 
    turing_module();
    virtual ~turing_module();
@@ -41,7 +40,7 @@ struct turing_module : Module {
    json_t *dataToJson() override;
    void dataFromJson(json_t* root) override;
   
-   void step() override;
+   void process(const ProcessArgs &args) override;
    void onReset() override;
    void onRandomize() override;
 };

@@ -43,5 +43,5 @@ struct turing_digital_module : Module {
    turing_digital_module();
    virtual ~turing_digital_module();
 
-   void step() override;
+   void process(const ProcessArgs &args) override;
 };

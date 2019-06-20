@@ -43,5 +43,5 @@ struct turing_pulse_module : Module {
    turing_pulse_module();
    virtual ~turing_pulse_module();
   
-   void step() override;
+   void process(const ProcessArgs &args) override;
 };

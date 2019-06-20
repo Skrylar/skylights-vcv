@@ -23,5 +23,5 @@ struct turing_volts_module : Module {
    turing_volts_module();
    virtual ~turing_volts_module();
   
-   void step() override;
+   void process(const ProcessArgs &args) override;
 };

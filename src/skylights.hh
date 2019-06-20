@@ -1,11 +1,16 @@
 #pragma once
 
 // we don't control these, so don't complain to me about them
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wall"
 #pragma GCC diagnostic ignored "-Wextra"
+#endif
+
+#if defined(__clang__)
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Weverything"
+#endif
 
 #include <vector>
 #include <condition_variable>
@@ -14,8 +19,12 @@
 #include "rack.hpp"
 
 // re-entering our zone of concern
+#if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic pop
+#endif
+#if defined(__clang__)
 #pragma clang diagnostic pop
+#endif
 
 using namespace rack;
 

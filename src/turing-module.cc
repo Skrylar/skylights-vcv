@@ -1,29 +1,29 @@
 #include "turing-module.hh"
 
 #include <cmath>
+#include <algorithm>
+// const double SEMITONE = 1.0 / 12.0;
 
-const double SEMITONE = 1.0 / 12.0;
-
-void turing_module::step() {
+void turing_module::process(const ProcessArgs &args) {
    double mode;
-   if (inputs[I_MODE].active)
-      mode = inputs[I_MODE].value;
+   if (inputs[I_MODE].isConnected())
+      mode = inputs[I_MODE].getVoltage();
    else
-      mode = params[P_MODE].value;
+      mode = params[P_MODE].getValue();
 
    bool hot = m_sequence & 0x1;
-   outputs[O_GATE].value = hot ? 10.0 : 0.0;
+   outputs[O_GATE].setVoltage(hot ? 10.0 : 0.0);
    outputs[O_PULSE].value =
-     min(outputs[O_GATE].value * inputs[I_CLOCK].value, 10.0);
+		std::min(static_cast<double>(outputs[O_GATE].value * inputs[I_CLOCK].getVoltage()), 10.0);
 
    // check for clock advance
    auto was_high = m_clock_trigger.isHigh();
-   m_clock_trigger.process(inputs[I_CLOCK].value);
+   m_clock_trigger.process(inputs[I_CLOCK].getVoltage());
    if (!was_high && was_high != m_clock_trigger.isHigh()) {
      // clock was advanced
 
      // write knob always zeroes our input
-     if (params[P_WRITE].value > 0.9) hot = false;
+     if (params[P_WRITE].getValue() > 0.9) hot = false;
      else if (mode > 0.9) {
 	 // leave hot alone
       } else if (mode > 0.55) {
@@ -51,7 +51,7 @@ void turing_module::step() {
       uint16_t mask = 0;
       size_t steps = 0;
       for (double i = 0;
-	   i < params[P_LENGTH].value;
+	   i < params[P_LENGTH].getValue();
 	   i += 1)
       {
 	 mask <<= 1;
@@ -68,11 +68,11 @@ void turing_module::step() {
       uint8_t signal_d = m_sequence & 0xFF;
       double signal_a = (((double)signal_d) / 255.0);
       outputs[O_VOLTAGE].value =
-	(signal_a * params[P_SCALE].value) // signal scaled by scale knob
-	- (5.0 * params[P_POLE].value);    // shift to bi-polar on request
+	(signal_a * params[P_SCALE].getValue()) // signal scaled by scale knob
+	- (5.0 * params[P_POLE].getValue());    // shift to bi-polar on request
 
       // expander is always 10v unipolar
-      outputs[O_EXPANSION].value = (((double)m_sequence) / 65535.0) * 10.0;
+      outputs[O_EXPANSION].setVoltage((((double)m_sequence) / 65535.0) * 10.0);
 
       for (size_t i = 0;
 	   i < 8;
@@ -83,7 +83,8 @@ void turing_module::step() {
    }
 }
 
-turing_module::turing_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS), m_sequence(0) {
+turing_module::turing_module() : m_sequence(0) {
+	this->Module::config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 }
 
 turing_module::~turing_module() {
