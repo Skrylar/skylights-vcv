@@ -2,9 +2,9 @@
 #include "whatnote-module.hh"
 
 whatnote_module_widget::whatnote_module_widget(Module* module) : ModuleWidget(module) {
-  font = APP->window->loadFont(assetPlugin(pluginInstance, "res/LEDCalculator.ttf"));
+  font = APP->window->loadFont(asset::plugin(pluginInstance, "res/LEDCalculator.ttf"));
 
-  setPanel(APP->window->loadSvg(assetPlugin(pluginInstance, "res/WhatNote.svg")));
+  setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/WhatNote.svg")));
 
   addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
   addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));

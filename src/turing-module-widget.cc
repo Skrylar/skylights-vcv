@@ -2,7 +2,7 @@
 #include "turing-module.hh"
 
 turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module) {
-  setPanel(APP->window->loadSvg(assetPlugin(pluginInstance, "res/Alan.svg")));
+  setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Alan.svg")));
 
   addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
   addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
