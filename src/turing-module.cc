@@ -9,7 +9,7 @@ void turing_module::process(const ProcessArgs &args) {
    if (inputs[I_MODE].active)
       mode = inputs[I_MODE].value;
    else
-      mode = params[P_MODE].value;
+      mode = params[P_MODE].getValue();
 
    bool hot = m_sequence & 0x1;
    outputs[O_GATE].value = hot ? 10.0 : 0.0;
@@ -23,7 +23,7 @@ void turing_module::process(const ProcessArgs &args) {
      // clock was advanced
 
      // write knob always zeroes our input
-     if (params[P_WRITE].value > 0.9) hot = false;
+     if (params[P_WRITE].getValue() > 0.9) hot = false;
      else if (mode > 0.9) {
 	 // leave hot alone
       } else if (mode > 0.55) {
@@ -51,7 +51,7 @@ void turing_module::process(const ProcessArgs &args) {
       uint16_t mask = 0;
       size_t steps = 0;
       for (double i = 0;
-	   i < params[P_LENGTH].value;
+	   i < params[P_LENGTH].getValue();
 	   i += 1)
       {
 	 mask <<= 1;
@@ -68,8 +68,8 @@ void turing_module::process(const ProcessArgs &args) {
       uint8_t signal_d = m_sequence & 0xFF;
       double signal_a = (((double)signal_d) / 255.0);
       outputs[O_VOLTAGE].value =
-	(signal_a * params[P_SCALE].value) // signal scaled by scale knob
-	- (5.0 * params[P_POLE].value);    // shift to bi-polar on request
+	(signal_a * params[P_SCALE].getValue()) // signal scaled by scale knob
+	- (5.0 * params[P_POLE].getValue());    // shift to bi-polar on request
 
       // expander is always 10v unipolar
       outputs[O_EXPANSION].value = (((double)m_sequence) / 65535.0) * 10.0;

@@ -10,7 +10,7 @@ void turing_volts_module::process(const ProcessArgs &args) {
 	i++)
    {
       double here = (((seq & (1 << i)) > 0.0) ? 1.0 : 0.0)
-	 * params[P_VOL1 + i].value;
+	 * params[P_VOL1 + i].getValue();
       lights[L_LIGHT1 + i].value = fabs(here);
       signal += here;
    }

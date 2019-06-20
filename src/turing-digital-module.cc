@@ -24,7 +24,7 @@ void turing_digital_module::process(const ProcessArgs &args) {
       gate = (seq & (1 << o)) ? 1.0 : 0.0;
       outputs[O_LEFT].value +=
 	 m_antipop[o].step(gate,
-			   params[P_VOL1 + i].value *
+			   params[P_VOL1 + i].getValue() *
 			   inputs[I_INPUT1 + i].value);
 
       o++;
@@ -32,7 +32,7 @@ void turing_digital_module::process(const ProcessArgs &args) {
       gate = (seq & (1 << o)) ? 1.0 : 0.0;
       outputs[O_RIGHT].value +=
 	 m_antipop[o].step(gate,
-			   params[P_VOL1 + i].value *
+			   params[P_VOL1 + i].getValue() *
 			   inputs[I_INPUT1 + i].value);
 
       o++;
