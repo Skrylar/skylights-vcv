@@ -5,7 +5,7 @@
 const double SEMITONE = 1.0 / 12.0;
 
 void whatnote_module::process(const ProcessArgs &args) {
-  voltage = inputs[0].value;
+  voltage = inputs[0].getVoltage();
   
   // its not valid, so don't analyze it
   if (voltage < -10.0 || voltage > 10.0) {

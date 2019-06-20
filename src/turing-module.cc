@@ -7,18 +7,18 @@ const double SEMITONE = 1.0 / 12.0;
 void turing_module::process(const ProcessArgs &args) {
    double mode;
    if (inputs[I_MODE].active)
-      mode = inputs[I_MODE].value;
+      mode = inputs[I_MODE].getVoltage();
    else
       mode = params[P_MODE].getValue();
 
    bool hot = m_sequence & 0x1;
    outputs[O_GATE].value = hot ? 10.0 : 0.0;
    outputs[O_PULSE].value =
-     min(outputs[O_GATE].value * inputs[I_CLOCK].value, 10.0);
+     min(outputs[O_GATE].value * inputs[I_CLOCK].getVoltage(), 10.0);
 
    // check for clock advance
    auto was_high = m_clock_trigger.isHigh();
-   m_clock_trigger.process(inputs[I_CLOCK].value);
+   m_clock_trigger.process(inputs[I_CLOCK].getVoltage());
    if (!was_high && was_high != m_clock_trigger.isHigh()) {
      // clock was advanced
 

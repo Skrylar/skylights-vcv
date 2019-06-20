@@ -1,7 +1,7 @@
 #include "turing-digital-module.hh"
 
 void turing_digital_module::process(const ProcessArgs &args) {
-   uint16_t seq = (uint16_t)ceil((inputs[I_EXPANDER].value / 10.0) * 65535.0);
+   uint16_t seq = (uint16_t)ceil((inputs[I_EXPANDER].getVoltage() / 10.0) * 65535.0);
 
    lights[L_GATE1].value = (seq & 1) > 0 ? 1.0 : 0.0;
    lights[L_GATE2].value = (seq & 2) > 0 ? 1.0 : 0.0;
@@ -25,7 +25,7 @@ void turing_digital_module::process(const ProcessArgs &args) {
       outputs[O_LEFT].value +=
 	 m_antipop[o].step(gate,
 			   params[P_VOL1 + i].getValue() *
-			   inputs[I_INPUT1 + i].value);
+			   inputs[I_INPUT1 + i].getVoltage());
 
       o++;
 
@@ -33,7 +33,7 @@ void turing_digital_module::process(const ProcessArgs &args) {
       outputs[O_RIGHT].value +=
 	 m_antipop[o].step(gate,
 			   params[P_VOL1 + i].getValue() *
-			   inputs[I_INPUT1 + i].value);
+			   inputs[I_INPUT1 + i].getVoltage());
 
       o++;
    }
