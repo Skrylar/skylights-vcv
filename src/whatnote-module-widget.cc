@@ -14,24 +14,24 @@ whatnote_module_widget::whatnote_module_widget(Module* module) : ModuleWidget(mo
   addInput(createPort<PJ301MPort>(Vec(57.5, 273), PortWidget::INPUT, module, whatnote_module::AUDIO_INPUT + 0));
 }
 
-void whatnote_module_widget::draw(NVGcontext* vg) {
+void whatnote_module_widget::draw(const DrawArgs &args) {
   whatnote_module* mod = reinterpret_cast<whatnote_module*>(module);
 
   static const char* semitone_labels[12] =
     { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
-  ModuleWidget::draw(vg);
+  ModuleWidget::draw(args);
   if (!mod) return;
 
   char buffer[128];
 
-  nvgFillColor(vg, nvgRGBA(0x00, 0x00, 0x00, 0xFF));
-  nvgFontFaceId(vg, font->handle);
-  nvgTextLetterSpacing(vg, 0);
-  nvgTextAlign(vg, NVG_ALIGN_CENTER);
+  nvgFillColor(args.vg, nvgRGBA(0x00, 0x00, 0x00, 0xFF));
+  nvgFontFaceId(args.vg, font->handle);
+  nvgTextLetterSpacing(args.vg, 0);
+  nvgTextAlign(args.vg, NVG_ALIGN_CENTER);
 
   // the big font
-  nvgFontSize(vg, 20);
+  nvgFontSize(args.vg, 20);
 
   if (mod->octave >= -10) {
     snprintf
@@ -41,10 +41,10 @@ void whatnote_module_widget::draw(NVGcontext* vg) {
        semitone_labels[mod->semitone],
        mod->octave);
 
-    nvgTextBox(vg, 25, 164, 85, buffer, 0);
+    nvgTextBox(args.vg, 25, 164, 85, buffer, 0);
 
     // the little fonts
-    nvgFontSize(vg, 14);
+    nvgFontSize(args.vg, 14);
 
     if (mod->cents > 0) {
        snprintf
@@ -60,12 +60,12 @@ void whatnote_module_widget::draw(NVGcontext* vg) {
 	   mod->cents);
     }
 
-    nvgTextBox(vg, 25, 182, 85, buffer, 0);
+    nvgTextBox(args.vg, 25, 182, 85, buffer, 0);
   } else {
-    nvgTextBox(vg, 25, 164, 85, "--", 0);
+    nvgTextBox(args.vg, 25, 164, 85, "--", 0);
 
     // the little fonts
-    nvgFontSize(vg, 14);
+    nvgFontSize(args.vg, 14);
   }
 
   snprintf
@@ -74,7 +74,7 @@ void whatnote_module_widget::draw(NVGcontext* vg) {
      "%.2f V",
      mod->voltage);
 
-  nvgTextBox(vg, 25, 198, 85, buffer, 0);
+  nvgTextBox(args.vg, 25, 198, 85, buffer, 0);
 }
 
 // Specify the Module and ModuleWidget subclass, human-readable
