@@ -6,7 +6,7 @@ const double SEMITONE = 1.0 / 12.0;
 
 void turing_module::process(const ProcessArgs &args) {
    double mode;
-   if (inputs[I_MODE].active)
+   if (inputs[I_MODE].isConnected())
       mode = inputs[I_MODE].getVoltage();
    else
       mode = params[P_MODE].getValue();
