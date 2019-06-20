@@ -1,6 +1,6 @@
 #include "turing-volts-module.hh"
 
-void turing_volts_module::step() {
+void turing_volts_module::process(const ProcessArgs &args) {
    uint16_t seq = (uint16_t)ceil((inputs[I_EXPANDER].value / 10.0) * 65535.0);
 
    double signal = 0;

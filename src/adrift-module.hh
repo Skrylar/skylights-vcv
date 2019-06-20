@@ -39,7 +39,7 @@ struct adrift_module: public Module {
    void noisify_all();
    void noisify(int channel);
 
-   void step() override;
+   void process(const ProcessArgs &args) override;
    void onSampleRateChange() override;
    void onReset() override;
    void onRandomize() override;

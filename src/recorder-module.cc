@@ -1,6 +1,6 @@
 #include "recorder-module.hh"
 
-void recorder_module::step() {
+void recorder_module::process(const ProcessArgs &args) {
 
 }
 

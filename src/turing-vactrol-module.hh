@@ -43,5 +43,5 @@ struct turing_vactrol_module : Module {
    turing_vactrol_module();
    virtual ~turing_vactrol_module();
 
-   void step() override;
+   void process(const ProcessArgs &args) override;
 };

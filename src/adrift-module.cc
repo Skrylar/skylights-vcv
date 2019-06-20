@@ -33,7 +33,7 @@ void adrift_module::noisify(int channel) {
    noise[channel] = ((double)dac) / 255.0;
 }
 
-void adrift_module::step() {
+void adrift_module::process(const ProcessArgs &args) {
    if (m_reset_all.process(inputs[I_TRIG_ALL].value)) {
       noisify_all();
    } else {

@@ -1,6 +1,6 @@
 #include "turing-vactrol-module.hh"
 
-void turing_vactrol_module::step() {
+void turing_vactrol_module::process(const ProcessArgs &args) {
    uint16_t seq = (uint16_t)ceil((inputs[I_EXPANDER].value / 10.0) * 65535.0);
 
    lights[L_GATE1].value = (seq & 1) > 0 ? 1.0 : 0.0;

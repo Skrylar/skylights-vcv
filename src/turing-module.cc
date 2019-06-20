@@ -4,7 +4,7 @@
 
 const double SEMITONE = 1.0 / 12.0;
 
-void turing_module::step() {
+void turing_module::process(const ProcessArgs &args) {
    double mode;
    if (inputs[I_MODE].active)
       mode = inputs[I_MODE].value;
