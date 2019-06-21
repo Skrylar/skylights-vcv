@@ -4,8 +4,8 @@
 
 const double SEMITONE = 1.0 / 12.0;
 
-void whatnote_module::step() {
-  voltage = inputs[0].value;
+void whatnote_module::process(const ProcessArgs &args) {
+  voltage = inputs[0].getVoltage();
   
   // its not valid, so don't analyze it
   if (voltage < -10.0 || voltage > 10.0) {
@@ -37,7 +37,8 @@ void whatnote_module::step() {
   assert(semitone < 12);
 }
 
-whatnote_module::whatnote_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS), octave(0), semitone(0), cents(0), voltage(0) {
+whatnote_module::whatnote_module() : octave(0), semitone(0), cents(0), voltage(0) {
+	this->Module::config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 }
 
 whatnote_module::~whatnote_module() {

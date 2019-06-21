@@ -1,6 +1,6 @@
 
 from tags import ModuleTag
- 
+
 simple_plugins = [
    {
       'name': 'adrift',
@@ -13,36 +13,35 @@ simple_plugins = [
       'name': 'turing',
       'plugin': "Skylights",
       'slug': "SkTuringV2",
-      'friendly_name': "SK Alan (Turing Machine)",
+      'friendly_name': "Alan (Turing Machine)",
       'tags': [ModuleTag.SEQUENCER_TAG],
    },
    {
       'name': 'turing_pulse',
       'plugin': "Skylights",
       'slug': "SkTuringPulse",
-      'friendly_name': "SK Alan (Pulse Expander)",
+      'friendly_name': "Alan (Pulse Expander)",
       'tags': [ModuleTag.UTILITY_TAG],
    },
    {
       'name': 'turing_volts',
       'plugin': "Skylights",
       'slug': "SkTuringVolts",
-      'friendly_name': "SK Alan (Volts Expander)",
-      'tags': [ModuleTag.UTILITY_TAG],      
+      'friendly_name': "Alan (Volts Expander)",
+      'tags': [ModuleTag.UTILITY_TAG],
    },
    {
       'name': 'turing_digital',
       'plugin': 'Skylights',
       'slug': 'SkTuringVactrol',
-      'friendly_name': "SK Alan (Digital Mix Expander)",
+      'friendly_name': "Alan (Digital Mix Expander)",
       'tags': [ModuleTag.UTILITY_TAG],
    },
    {
       'name': 'turing_vactrol',
       'plugin': 'Skylights',
       'slug': 'SkTuringVactrolAnalogue',
-      'friendly_name': "SK Alan (Vactrol Mix Expander)",
+      'friendly_name': "Alan (Vactrol Mix Expander)",
       'tags': [ModuleTag.UTILITY_TAG],
    },
 ]
-

@@ -1,7 +1,7 @@
 #include "turing-vactrol-module.hh"
 
-void turing_vactrol_module::step() {
-   uint16_t seq = (uint16_t)ceil((inputs[I_EXPANDER].value / 10.0) * 65535.0);
+void turing_vactrol_module::process(const ProcessArgs &args) {
+   uint16_t seq = (uint16_t)ceil((inputs[I_EXPANDER].getVoltage() / 10.0) * 65535.0);
 
    lights[L_GATE1].value = (seq & 1) > 0 ? 1.0 : 0.0;
    lights[L_GATE2].value = (seq & 2) > 0 ? 1.0 : 0.0;
@@ -12,8 +12,8 @@ void turing_vactrol_module::step() {
    lights[L_GATE7].value = (seq & 64) > 0 ? 1.0 : 0.0;
    lights[L_GATE8].value = (seq & 128) > 0 ? 1.0 : 0.0;
 
-   outputs[O_LEFT].value = 0.0;
-   outputs[O_RIGHT].value = 0.0;
+   outputs[O_LEFT].setVoltage(0.0);
+   outputs[O_RIGHT].setVoltage(0.0);
 
    size_t o = 0; // stores which of the eight steps we're working with
    for (size_t i = 0;
@@ -24,24 +24,25 @@ void turing_vactrol_module::step() {
       gate = (seq & (1 << o)) ? 1.0 : 0.0;
       outputs[O_LEFT].value +=
 	 m_vactrol[o].step(gate) *
-	 (params[P_VOL1 + i].value *
-	  inputs[I_INPUT1 + i].value);
+	 (params[P_VOL1 + i].getValue() *
+	  inputs[I_INPUT1 + i].getVoltage());
 
       o++;
 
       gate = (seq & (1 << o)) ? 1.0 : 0.0;
       outputs[O_RIGHT].value +=
 	 m_vactrol[o].step(gate) *
-	 (params[P_VOL1 + i].value *
-	  inputs[I_INPUT1 + i].value);
+	 (params[P_VOL1 + i].getValue() *
+	  inputs[I_INPUT1 + i].getVoltage());
 
       o++;
    }
 }
 
 turing_vactrol_module::turing_vactrol_module()
-  : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+	: Module() 
 {
+	this->Module::config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
    for (size_t i = 0;
 	i < 8;
 	i++)
@@ -53,7 +54,7 @@ turing_vactrol_module::turing_vactrol_module()
 }
 
 void turing_vactrol_module::onSampleRateChange() {
-   double s = engineGetSampleRate();
+   double s = APP->engine->getSampleRate();
    for (size_t i = 0;
 	i < 8;
 	i++)

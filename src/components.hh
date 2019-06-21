@@ -1,8 +1,9 @@
 
 #pragma once
 
-struct DavidLTPort : public SVGPort {
-   DavidLTPort() {	
-      setSVG(SVG::load(assetPlugin(plugin, "res/cntr_LT.svg")));
+struct DavidLTPort : public SvgPort {
+   DavidLTPort() {
+		setSvg(APP->window->loadSvg(asset::plugin(pluginInstance,"res/cntr_LT.svg")));
+
    }
 };

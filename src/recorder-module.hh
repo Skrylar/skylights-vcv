@@ -26,5 +26,5 @@ struct recorder_module : Module {
   recorder_module();
   virtual ~recorder_module();
 
-  void step() override;
+  void process(const ProcessArgs &args) override;
 };

@@ -1,6 +1,5 @@
 #include "skylights.hh"
 #include "bit-spigot.hh"
-#include <dsp/digital.hpp>
 
 struct adrift_module: public Module {
    static const size_t channels = 6;
@@ -27,8 +26,8 @@ struct adrift_module: public Module {
       NUM_LIGHTS
    };
 
-   rack::SchmittTrigger m_reset_all;
-   rack::SchmittTrigger m_reset[channels];
+   rack::dsp::SchmittTrigger m_reset_all;
+   rack::dsp::SchmittTrigger m_reset[channels];
    double noise[channels];
 
    bit_spigot m_noise_source;
@@ -39,11 +38,11 @@ struct adrift_module: public Module {
    void noisify_all();
    void noisify(int channel);
 
-   void step() override;
+   void process(const ProcessArgs &args) override;
    void onSampleRateChange() override;
    void onReset() override;
    void onRandomize() override;
 
-   json_t *toJson() override;
-   void fromJson(json_t* root) override;
+   json_t *dataToJson() override;
+   void dataFromJson(json_t* root) override;
 };

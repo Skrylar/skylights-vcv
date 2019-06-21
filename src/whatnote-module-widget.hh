@@ -7,6 +7,6 @@ struct whatnote_module_widget : ModuleWidget {
   
   whatnote_module_widget(Module* module);
 
-  void draw(NVGcontext *vg) override;
+  void draw(const DrawArgs &args) override;
 
 };

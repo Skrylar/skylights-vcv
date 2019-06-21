@@ -1,37 +1,38 @@
 #include "whatnote-module-widget.hh"
 #include "whatnote-module.hh"
 
-whatnote_module_widget::whatnote_module_widget(Module* module) : ModuleWidget(module) {
-  font = Font::load(assetPlugin(plugin, "res/LEDCalculator.ttf"));
+whatnote_module_widget::whatnote_module_widget(Module* module) {
+	setModule(module);
+  font = APP->window->loadFont(asset::plugin(pluginInstance, "res/LEDCalculator.ttf"));
   
-  setPanel(SVG::load(assetPlugin(plugin, "res/WhatNote.svg")));
+  setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/WhatNote.svg")));
 
-  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
-  addChild(Widget::create<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
-  addChild(Widget::create<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
+  addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
+  addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-  addInput(Port::create<PJ301MPort>(Vec(57.5, 273), Port::INPUT, module, whatnote_module::AUDIO_INPUT + 0));
+  addInput(createInput<PJ301MPort>(Vec(57.5, 273), module, whatnote_module::AUDIO_INPUT + 0));
 }
 
-void whatnote_module_widget::draw(NVGcontext* vg) {
+void whatnote_module_widget::draw(const DrawArgs &args) {
   whatnote_module* mod = reinterpret_cast<whatnote_module*>(module);
 
   static const char* semitone_labels[12] =
     { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
   
-  ModuleWidget::draw(vg);
+  ModuleWidget::draw(args);
   if (!mod) return;
 
   char buffer[128];
   
-  nvgFillColor(vg, nvgRGBA(0x00, 0x00, 0x00, 0xFF));
-  nvgFontFaceId(vg, font->handle);
-  nvgTextLetterSpacing(vg, 0);
-  nvgTextAlign(vg, NVG_ALIGN_CENTER);
+  nvgFillColor(args.vg, nvgRGBA(0x00, 0x00, 0x00, 0xFF));
+  nvgFontFaceId(args.vg, font->handle);
+  nvgTextLetterSpacing(args.vg, 0);
+  nvgTextAlign(args.vg, NVG_ALIGN_CENTER);
 
   // the big font
-  nvgFontSize(vg, 20);
+  nvgFontSize(args.vg, 20);
 
   if (mod->octave >= -10) {
     snprintf
@@ -41,10 +42,10 @@ void whatnote_module_widget::draw(NVGcontext* vg) {
        semitone_labels[mod->semitone],
        mod->octave);
   
-    nvgTextBox(vg, 25, 164, 85, buffer, 0);
+    nvgTextBox(args.vg, 25, 164, 85, buffer, 0);
 
     // the little fonts
-    nvgFontSize(vg, 14);
+    nvgFontSize(args.vg, 14);
 
     if (mod->cents > 0) {
        snprintf
@@ -60,12 +61,12 @@ void whatnote_module_widget::draw(NVGcontext* vg) {
 	   mod->cents);
     }
   
-    nvgTextBox(vg, 25, 182, 85, buffer, 0);
+    nvgTextBox(args.vg, 25, 182, 85, buffer, 0);
   } else {
-    nvgTextBox(vg, 25, 164, 85, "--", 0);
+    nvgTextBox(args.vg, 25, 164, 85, "--", 0);
     
     // the little fonts
-    nvgFontSize(vg, 14);
+    nvgFontSize(args.vg, 14);
   }
 
   snprintf
@@ -74,11 +75,11 @@ void whatnote_module_widget::draw(NVGcontext* vg) {
      "%.2f V",
      mod->voltage);
   
-  nvgTextBox(vg, 25, 198, 85, buffer, 0);
+  nvgTextBox(args.vg, 25, 198, 85, buffer, 0);
 }
 
 // Specify the Module and ModuleWidget subclass, human-readable
-// author name for categorization per plugin, module slug (should never
+// author name for categorization per pluginInstance, module slug (should never
 // change), human-readable module name, and any number of tags
 // (found in `include/tags.hpp`) separated by commas.
-Model *whatnote_model = Model::create<whatnote_module, whatnote_module_widget>("Skylights", "SkWhatnoteCV", "SK What Note? (CV Tuner)", TUNER_TAG, UTILITY_TAG);
+Model *whatnote_model = createModel<whatnote_module, whatnote_module_widget>("SkWhatnoteCV");
