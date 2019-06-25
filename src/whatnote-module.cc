@@ -37,7 +37,8 @@ void whatnote_module::process(const ProcessArgs &args) {
   assert(semitone < 12);
 }
 
-whatnote_module::whatnote_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS), octave(0), semitone(0), cents(0), voltage(0) {
+whatnote_module::whatnote_module() : Module(), octave(0), semitone(0), cents(0), voltage(0) {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 }
 
 whatnote_module::~whatnote_module() {

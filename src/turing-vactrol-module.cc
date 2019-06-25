@@ -39,9 +39,10 @@ void turing_vactrol_module::process(const ProcessArgs &args) {
    }
 }
 
-turing_vactrol_module::turing_vactrol_module()
-  : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+turing_vactrol_module::turing_vactrol_module() : Module()
 {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
+
    for (size_t i = 0; i < 8; i++)
    {
       m_vactrol[i] = vtl5c3();

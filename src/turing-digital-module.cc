@@ -39,9 +39,9 @@ void turing_digital_module::process(const ProcessArgs &args) {
    }
 }
 
-turing_digital_module::turing_digital_module()
-  : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS)
+turing_digital_module::turing_digital_module() : Module()
 {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
    onSampleRateChange();
    for (size_t i = 0; i < 4; i++)
    {

@@ -18,7 +18,8 @@ void turing_volts_module::process(const ProcessArgs &args) {
    outputs[O_VOLTAGE].setVoltage(signal * 2.0);
 }
 
-turing_volts_module::turing_volts_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+turing_volts_module::turing_volts_module() : Module() {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
   for (size_t i = 0;
        i < 5;
        i++)

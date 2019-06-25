@@ -4,7 +4,8 @@ void recorder_module::process(const ProcessArgs &args) {
 
 }
 
-recorder_module::recorder_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS) {
+recorder_module::recorder_module() : Module() {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 }
 
 recorder_module::~recorder_module() {

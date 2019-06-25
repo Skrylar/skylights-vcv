@@ -83,7 +83,8 @@ void turing_module::process(const ProcessArgs &args) {
    }
 }
 
-turing_module::turing_module() : Module(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS), m_sequence(0) {
+turing_module::turing_module() : Module(), m_sequence(0) {
+  config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
   configParam(turing_module::P_MODE, 0.0, 1.0, 1.0, "");
   configParam(turing_module::P_SCALE, 0.0, 10.0, 1.0, "");
   configParam(turing_module::P_LENGTH, 2.0, 16.0, 8.0, "");
