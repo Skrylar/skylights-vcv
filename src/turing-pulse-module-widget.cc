@@ -1,7 +1,7 @@
 #include "turing-pulse-module-widget.hh"
 #include "turing-pulse-module.hh"
 
-turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleWidget(module) {
+turing_pulse_module_widget::turing_pulse_module_widget(Module* module) : ModuleWidget() {
    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/AlanPulses.svg")));
 
    addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));

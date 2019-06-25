@@ -2,7 +2,7 @@
 #include "adrift-module-widget.hh"
 
 adrift_module_widget::adrift_module_widget(Module* module)
-   : ModuleWidget(module)
+   : ModuleWidget()
 {
    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Adrift.svg")));
 

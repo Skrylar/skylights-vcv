@@ -1,7 +1,7 @@
 #include "turing-module-widget.hh"
 #include "turing-module.hh"
 
-turing_module_widget::turing_module_widget(Module* module) : ModuleWidget(module) {
+turing_module_widget::turing_module_widget(Module* module) : ModuleWidget() {
   setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Alan.svg")));
 
   addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));

@@ -1,7 +1,7 @@
 #include "turing-digital-module-widget.hh"
 #include "turing-digital-module.hh"
 
-turing_digital_module_widget::turing_digital_module_widget(Module* module) : ModuleWidget(module) {
+turing_digital_module_widget::turing_digital_module_widget(Module* module) : ModuleWidget() {
    setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/AlanDigital.svg")));
 
    addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));

@@ -1,7 +1,7 @@
 #include "recorder-module-widget.hh"
 #include "recorder-module.hh"
 
-recorder_module_widget::recorder_module_widget(Module* module) : ModuleWidget(module) {
+recorder_module_widget::recorder_module_widget(Module* module) : ModuleWidget() {
 	setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Recorder.svg")));
 
 	addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));

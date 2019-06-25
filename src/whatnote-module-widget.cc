@@ -1,7 +1,7 @@
 #include "whatnote-module-widget.hh"
 #include "whatnote-module.hh"
 
-whatnote_module_widget::whatnote_module_widget(Module* module) : ModuleWidget(module) {
+whatnote_module_widget::whatnote_module_widget(Module* module) : ModuleWidget() {
   font = APP->window->loadFont(asset::plugin(pluginInstance, "res/LEDCalculator.ttf"));
 
   setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/WhatNote.svg")));
