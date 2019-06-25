@@ -8,8 +8,8 @@ uint32_t rand32(void) {
 }
 
 void cmwc::seed(unsigned int seed) {
-   srand(seed);        
-   for (int i = 0; i < CMWC_CYCLE; i++)
+   srand(seed);
+   for (size_t i = 0; i < CMWC_CYCLE; i++)
       this->Q[i] = rand32();
    do
       this->c = rand32();
