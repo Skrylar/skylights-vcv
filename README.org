@@ -203,6 +203,42 @@ pulse to either =All= or a =Sail= port.) Retriggering while a note is
 probably fun but will be abrupt--you will need to bring your own slew
 limiter if smoothness is desired.
 
+** Vactrolyzer
+
+The vactrolyzer has only =in= and =out= ports, two pairs. Any signal
+which is sent to the input is run through an analogue modelled vactrol
+and the resulting signal is sent to the output.
+
+These are used in low pass gates or certain unusual pieces of
+equipment (like the Turing Machine's stereo mixer) to add a natural
+pluck and lag to on/off signals. It can be used as a kind of slew
+limiter for simpler control signals but is based on the response curve
+of the actual VTL5C3 chip (which is not configurable.)
+
+A scaler/amplifier may be needed as a second stage to bring the output
+up to whatever range you need.
+
+Vactrols are typically low voltage and their response curves are not
+linear. They do not accept negative control voltages and over-volting
+them causes distortions or failure of the device. In the simulation
+overvoltage simply returns an output of 1V and negative voltages are
+ignored (it will output 0V.)
+
+** Internal notes
+
+The analogue modeling works as follows:
+
+ - Incoming voltages from Rack are adapted to the chip's actual
+   operating range.
+ - An "exponentially weighted moving average" is taken but it has two
+   weight factors: increase and decrease. Each one was tuned with
+   genetic programming to match the light on and light off values from
+   the chip's spec sheet. So an on signal "pulls" the LED towards
+   brightness in the sensor chamber and an off signal allows it to
+   fall.
+ - This weighted value is then run through a small formula which was
+   curve fit against the data sheet, to simulate non-linear output.
+
 * Licenses
 Skylights itself is available under the BSD license.
 
