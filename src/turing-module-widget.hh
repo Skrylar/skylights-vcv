@@ -3,5 +3,5 @@
 #include "skylights.hh"
 
 struct turing_module_widget : ModuleWidget {
-  turing_module_widget(Module* module);
+  turing_module_widget(Module *module);
 };

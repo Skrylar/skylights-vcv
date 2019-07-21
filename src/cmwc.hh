@@ -8,9 +8,9 @@
 class cmwc {
   static const size_t CMWC_CYCLE = 4096;      // as Marsaglia recommends
   static const size_t CMWC_C_MAX = 809430660; // as Marsaglia recommends
-  
+
   uint32_t Q[CMWC_CYCLE];
-  uint32_t c;			// must be limited with CMWC_C_MAX
+  uint32_t c; // must be limited with CMWC_C_MAX
   unsigned i;
 
 public:

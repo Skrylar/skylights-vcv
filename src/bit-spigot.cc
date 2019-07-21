@@ -25,7 +25,8 @@ void bit_spigot::reset() {
 }
 
 bool bit_spigot::next() {
-  if (m_taps == 0) reset();
+  if (m_taps == 0)
+    reset();
   bool result = m_data & 0x1;
   m_data >>= 1;
   m_taps--;

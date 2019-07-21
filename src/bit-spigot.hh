@@ -10,7 +10,7 @@ class bit_spigot {
   uint32_t m_data;
   unsigned char m_taps;
   cmwc m_prng;
-  
+
 public:
   bit_spigot();
 

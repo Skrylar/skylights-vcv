@@ -1,53 +1,44 @@
-#include "adrift-module.hh"
 #include "adrift-module-widget.hh"
+#include "adrift-module.hh"
 
-adrift_module_widget::adrift_module_widget(Module* module)
-   : ModuleWidget()
-{
+adrift_module_widget::adrift_module_widget(Module *module) : ModuleWidget() {
   setModule(module);
-   setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/Adrift.svg")));
+  setPanel(
+      APP->window->loadSvg(asset::plugin(pluginInstance, "res/Adrift.svg")));
 
-   addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
-   addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
-   addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
-   addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, 0)));
+  addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, 0)));
+  addChild(createWidget<ScrewSilver>(
+      Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
+  addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH,
+                                         RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-   // all
-   addInput(createInput<DavidLTPort>
-	    (mm2px(Vec(6, 22)),
-	     module,
-	     adrift_module::I_TRIG_ALL));
+  // all
+  addInput(createInput<DavidLTPort>(mm2px(Vec(6, 22)), module,
+                                    adrift_module::I_TRIG_ALL));
 
-   // turbulence
-   addParam(createParam<RoundHugeBlackKnob>(mm2px(Vec(23, 22)), module, adrift_module::P_ATTENUATOR));
+  // turbulence
+  addParam(createParam<RoundHugeBlackKnob>(mm2px(Vec(23, 22)), module,
+                                           adrift_module::P_ATTENUATOR));
 
-   for (size_t i = 0;
-	i < adrift_module::channels;
-	i++)
-   {
-      const int shift = 32;
+  for (size_t i = 0; i < adrift_module::channels; i++) {
+    const int shift = 32;
 
-      // input
-      addInput(createInput<DavidLTPort>
-	       (Vec(7, 155 + (shift * i)),
-		module,
-		adrift_module::I_CV0 + i));
+    // input
+    addInput(createInput<DavidLTPort>(Vec(7, 155 + (shift * i)), module,
+                                      adrift_module::I_CV0 + i));
 
-      // sail
-      addInput(createInput<DavidLTPort>
-	       (Vec(41, 155 + (shift * i)),
-		module,
-		adrift_module::I_TRIG0 + i));
+    // sail
+    addInput(createInput<DavidLTPort>(Vec(41, 155 + (shift * i)), module,
+                                      adrift_module::I_TRIG0 + i));
 
-      // bipolar toggle
-      addParam(createParam<CKSS>(Vec(85, 157 + (shift * i)), module, adrift_module::P_BIP0 + i));
+    // bipolar toggle
+    addParam(createParam<CKSS>(Vec(85, 157 + (shift * i)), module,
+                               adrift_module::P_BIP0 + i));
 
-      addOutput(createOutput<DavidLTPort>
-		(Vec(117, 155 + (shift * i)),
-		 module,
-		 adrift_module::O_OUT0 + i));
-   }
+    addOutput(createOutput<DavidLTPort>(Vec(117, 155 + (shift * i)), module,
+                                        adrift_module::O_OUT0 + i));
+  }
 }
 
-adrift_module_widget::~adrift_module_widget() {
-}
+adrift_module_widget::~adrift_module_widget() {}
