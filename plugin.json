@@ -68,6 +68,14 @@
         "Tuner",
         "Utility"
       ]
+    },
+    {
+      "slug": "SkVactrolyzer",
+      "name": "Vactrolyzer",
+      "description": "An analogue modeled Vactrol.",
+      "tags": [
+        "Utility"
+      ]
     }
   ]
 }

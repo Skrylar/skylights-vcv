@@ -43,4 +43,11 @@ simple_plugins = [
         "friendly_name": "Alan (Vactrol Mix Expander)",
         "tags": [ModuleTag.UTILITY_TAG],
     },
+    {
+        "name": "vactrolyzer",
+        "plugin": "Skylights",
+        "slug": "SkVactrolyzer",
+        "friendly_name": "Vactrolyzer",
+        "tags": [ModuleTag.UTILITY_TAG],
+    },
 ]
