@@ -13,41 +13,34 @@ Plugin *pluginInstance;
     cog.outl('#include "{0}-module.hh"'.format(pn))
     cog.outl('#include "{0}-module-widget.hh"'.format(pn))
   ]]]*/
-#include "adrift-module-widget.hh"
 #include "adrift-module.hh"
-#include "turing-digital-module-widget.hh"
-#include "turing-digital-module.hh"
-#include "turing-module-widget.hh"
+#include "adrift-module-widget.hh"
 #include "turing-module.hh"
-#include "turing-pulse-module-widget.hh"
+#include "turing-module-widget.hh"
 #include "turing-pulse-module.hh"
-#include "turing-vactrol-module-widget.hh"
-#include "turing-vactrol-module.hh"
-#include "turing-volts-module-widget.hh"
+#include "turing-pulse-module-widget.hh"
 #include "turing-volts-module.hh"
+#include "turing-volts-module-widget.hh"
+#include "turing-digital-module.hh"
+#include "turing-digital-module-widget.hh"
+#include "turing-vactrol-module.hh"
+#include "turing-vactrol-module-widget.hh"
+#include "vactrolyzer-module.hh"
+#include "vactrolyzer-module-widget.hh"
 /*[[[end]]]*/
 
 /*[[[cog
   for p in simple_plugins:
-    cog.out('Model* {0}_model = createModel<{0}_module,
-  {0}_module_widget>("{1}"'.format(p['name'], p['slug'])) cog.outl(');')
+    cog.out('Model* {0}_model = createModel<{0}_module, {0}_module_widget>("{1}"'.format(p['name'], p['slug']))
+    cog.outl(');')
   ]]]*/
-Model *adrift_model =
-    createModel<adrift_module, adrift_module_widget>("SkAdrift");
-Model *turing_model =
-    createModel<turing_module, turing_module_widget>("SkTuringV2");
-Model *turing_pulse_model =
-    createModel<turing_pulse_module, turing_pulse_module_widget>(
-        "SkTuringPulse");
-Model *turing_volts_model =
-    createModel<turing_volts_module, turing_volts_module_widget>(
-        "SkTuringVolts");
-Model *turing_digital_model =
-    createModel<turing_digital_module, turing_digital_module_widget>(
-        "SkTuringVactrol");
-Model *turing_vactrol_model =
-    createModel<turing_vactrol_module, turing_vactrol_module_widget>(
-        "SkTuringVactrolAnalogue");
+Model* adrift_model = createModel<adrift_module, adrift_module_widget>("SkAdrift");
+Model* turing_model = createModel<turing_module, turing_module_widget>("SkTuringV2");
+Model* turing_pulse_model = createModel<turing_pulse_module, turing_pulse_module_widget>("SkTuringPulse");
+Model* turing_volts_model = createModel<turing_volts_module, turing_volts_module_widget>("SkTuringVolts");
+Model* turing_digital_model = createModel<turing_digital_module, turing_digital_module_widget>("SkTuringVactrol");
+Model* turing_vactrol_model = createModel<turing_vactrol_module, turing_vactrol_module_widget>("SkTuringVactrolAnalogue");
+Model* vactrolyzer_model = createModel<vactrolyzer_module, vactrolyzer_module_widget>("SkVactrolyzer");
 /*[[[end]]]*/
 
 void init(Plugin *p) {
@@ -69,5 +62,6 @@ void init(Plugin *p) {
   p->addModel(turing_volts_model);
   p->addModel(turing_digital_model);
   p->addModel(turing_vactrol_model);
+  p->addModel(vactrolyzer_model);
   /*[[[end]]]*/
 }
